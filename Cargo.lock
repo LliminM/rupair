@@ -195,12 +195,16 @@ name = "rupair"
 version = "0.1.0"
 dependencies = [
  "anyhow",
+ "nom",
  "pkg-config",
  "proc-macro2",
  "quote",
+ "regex",
+ "regex-automata",
  "syn",
  "walkdir",
  "z3",
+ "z3-sys",
 ]
 
 [[package]]

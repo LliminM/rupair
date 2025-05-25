@@ -1,21 +1,21 @@
-use anyhow::{Context, Result};
-use rupair::{analyzer, solver::BufferSolver, rectifier};
-use std::env;
-use std::fs;
+#![feature(rustc_private)]
+
+use anyhow::Result;
+use rupair::MirAnalyzer;  // 直接从 rupair 导入 MirAnalyzer
 use std::path::Path;
-use syn::parse_file;
 use walkdir::WalkDir;
-use z3::Context as Z3Context;
 
 fn main() -> Result<()> {
-    let args: Vec<String> = env::args().collect();
+    let args: Vec<String> = std::env::args().collect();
+    
+    // 检查命令行参数
     if args.len() < 2 {
-        println!("Usage: {} <file_or_directory>", args[0]);
+        println!("Usage: {} <path_to_rust_file_or_directory>", args[0]);
         return Ok(());
     }
 
-    let path = &args[1];
-    process_path(path)?;
+    // 处理输入路径
+    process_path(&args[1])?;
 
     Ok(())
 }
@@ -32,76 +32,30 @@ fn process_path(path: &str) -> Result<()> {
     } else if path.is_file() {
         process_file(path)?;
     }
-
     Ok(())
 }
 
 fn process_file(path: &Path) -> Result<()> {
-    println!("Processing file: {}", path.display());
+    // 创建MIR输出目录
+    let output_dir = path.parent().unwrap().join("mir_output");
+    std::fs::create_dir_all(&output_dir)?;
 
-    let source = fs::read_to_string(path).with_context(|| format!("Failed to read {}", path.display()))?;
-    let ast = parse_file(&source).with_context(|| format!("Failed to parse {}", path.display()))?;
+    // 使用rustc生成MIR
+    let args = vec![
+        String::from("rustc"),
+        path.to_string_lossy().into_owned(),
+        String::from("--emit=mir"),
+        format!("--out-dir={}", output_dir.display()),
+    ];
 
-    let candidates = analyzer::find_buffer_overflows(&ast);
-    if candidates.is_empty() {
-        println!("No buffer overflow candidates found in {}", path.display());
-        return Ok(());
-    }
+    // 运行rustc生成MIR文件
+    std::process::Command::new("rustc")
+        .args(&args)
+        .output()?;
 
-    println!("Found {} potential buffer overflow(s) in {}", candidates.len(), path.display());
-    
-    // Create Z3 context and solver
-    let z3_ctx = Z3Context::new(&z3::Config::new());
-    let mut solver = BufferSolver::new(&z3_ctx);
-    
-    // 存储实际确认的溢出
-    let mut confirmed_overflows = Vec::new();
-    
-    // Process each candidate
-    for candidate in &candidates {
-        println!("  - {}: {}", candidate.location, candidate.operation);
-        
-        // Add buffer and check for overflow
-        // (在真实场景中，我们需要从代码中提取真实的缓冲区大小)
-        let buffer_size = 10; // 这里只是示例，实际应该分析源代码中的缓冲区大小
-        solver.add_buffer(&candidate.buffer_name, buffer_size);
-        
-        // 估计偏移量 (同样，在真实场景中需要从代码中提取)
-        let offset = 15; // 示例偏移量
-        
-        let result = solver.check_overflow(&candidate.buffer_name, offset);
-        if result.is_overflow {
-            println!("    CONFIRMED OVERFLOW: Buffer size {} with offset {}", 
-                     result.buffer_size, result.offset);
-            
-            // 添加到确认的溢出列表
-            confirmed_overflows.push(candidate.clone());
-            
-            // Generate test case
-            let test = solver.generate_test_case(&candidate.buffer_name, offset);
-            println!("    Test case:\n{}", test);
-        } else {
-            println!("    Not a real overflow");
-        }
-    }
-    
-    // 如果有确认的溢出，使用rectifier修复代码
-    if !confirmed_overflows.is_empty() {
-        println!("\nFixing {} confirmed buffer overflow(s)...", confirmed_overflows.len());
-        
-        // 修复代码
-        let fixed_code = rectifier::rectify(&ast, &confirmed_overflows);
-        
-        // 保存修复后的代码到新文件
-        let fixed_path = path.with_file_name(format!(
-            "{}_fixed.rs", 
-            path.file_stem().unwrap().to_string_lossy()
-        ));
-        fs::write(&fixed_path, fixed_code)
-            .with_context(|| format!("Failed to write fixed code to {}", fixed_path.display()))?;
-        
-        println!("Fixed code written to {}", fixed_path.display());
-    }
+    // 使用MirAnalyzer分析生成的MIR文件
+    let mut analyzer = MirAnalyzer::new(output_dir);
+    analyzer.analyze()?;
 
     Ok(())
 }

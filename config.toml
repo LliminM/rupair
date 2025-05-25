@@ -1,0 +1,29 @@
+[build]
+# 使用预编译的 LLVM
+download-ci-llvm = true
+# 使用 MSVC 工具链
+target = "x86_64-pc-windows-msvc"
+# 禁用一些不必要的功能
+rustc-stage = 1
+rustc-stage2 = false
+rustc-stage3 = false
+# 禁用一些可能导致问题的功能
+debug = false
+optimize = true
+# 使用更简单的构建配置
+cargo = "cargo"
+rustc = "rustc"
+# 禁用一些不必要的组件
+docs = false
+tools = []
+extended = false
+
+[target.x86_64-pc-windows-msvc]
+# 使用 MSVC 工具链
+linker = "link.exe"
+ar = "lib.exe"
+# 禁用一些可能导致问题的功能
+debug = false
+optimize = true
+# 使用静态链接
+crt-static = true 

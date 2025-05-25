@@ -1,0 +1,8 @@
+[build]
+rustflags = [
+    "-C", "link-args=/FORCE:MULTIPLE",
+    "-L", "D:/OneDrive/桌面/rust/build/x86_64-pc-windows-msvc/stage0-rustc/x86_64-pc-windows-msvc/release/deps",
+    "-l", "static=rustc_driver",
+    "-L", "C:/Program Files/Z3/bin",  # Z3 库的路径
+    "-l", "libz3"  # 改为 libz3 而不是 z3
+]
