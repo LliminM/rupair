@@ -36,6 +36,9 @@ fn process_path(path: &str) -> Result<()> {
 }
 
 fn process_file(path: &Path) -> Result<()> {
+    println!("\n分析文件: {}", path.display());
+    println!("=========================");
+
     // 创建MIR输出目录
     let output_dir = path.parent().unwrap().join("mir_output");
     std::fs::create_dir_all(&output_dir)?;
@@ -55,6 +58,7 @@ fn process_file(path: &Path) -> Result<()> {
 
     // 使用MirAnalyzer分析生成的MIR文件
     let mut analyzer = MirAnalyzer::new(output_dir);
+    analyzer.set_source_file(path.to_path_buf());
     analyzer.analyze()?;
 
     Ok(())
