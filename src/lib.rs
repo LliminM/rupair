@@ -18,3 +18,4 @@ pub use rectifier::*;
 pub use solver::{BufferSolver, BufferConstraint};
 pub use validator::*;
 pub use mir_analyzer::{BufferOverflow, MirAnalyzer};
+pub use rectifier::Rectifier;

@@ -8,12 +8,15 @@ use regex::Regex;
 use syn::{self, parse_file};
 use std::fs;
 
+use crate::rectifier::{Rectifier, CodeFix};
+
 #[derive(Debug)]
 pub struct BufferOverflow {
     pub location: String,
     pub operation_type: String,
     pub description: String,
     pub fix_suggestion: String,
+    pub code_fix: Option<CodeFix>,
 }
 
 pub struct MirAnalyzer {
@@ -22,6 +25,7 @@ pub struct MirAnalyzer {
     vec_allocations: Vec<String>,
     pointer_operations: Vec<String>,
     buffer_overflows: Vec<BufferOverflow>,
+    rectifier: Option<Rectifier>,
 }
 
 impl MirAnalyzer {
@@ -32,11 +36,13 @@ impl MirAnalyzer {
             vec_allocations: Vec::new(),
             pointer_operations: Vec::new(),
             buffer_overflows: Vec::new(),
+            rectifier: None,
         }
     }
 
     pub fn set_source_file(&mut self, path: PathBuf) {
-        self.source_file = path;
+        self.source_file = path.clone();
+        self.rectifier = Some(Rectifier::new(path));
     }
 
     pub fn analyze(&mut self) -> Result<()> {
@@ -98,6 +104,14 @@ impl MirAnalyzer {
                 println!("操作类型: {}", overflow.operation_type);
                 println!("描述: {}", overflow.description);
                 println!("修复建议: {}", overflow.fix_suggestion);
+                
+                if let Some(fix) = &overflow.code_fix {
+                    println!("\n原始代码:");
+                    println!("{}", fix.original_code);
+                    println!("\n修复后的代码:");
+                    println!("{}", fix.fixed_code);
+                }
+                
                 println!("--------------------------");
             }
         } else {
@@ -182,6 +196,7 @@ impl MirAnalyzer {
                     operation_type: "Unsafe Block".to_string(),
                     description: "发现不安全代码块，需要仔细检查指针操作".to_string(),
                     fix_suggestion: "添加显式的边界检查，确保指针操作安全".to_string(),
+                    code_fix: None,
                 });
             }
 
@@ -200,6 +215,7 @@ impl MirAnalyzer {
                                 "1. 增加缓冲区大小到至少 {} 个元素\n   2. 或添加边界检查: if i < buffer.len() {{ ... }}",
                                 dat_size
                             ),
+                            code_fix: None,
                         });
                     }
                 }
@@ -216,11 +232,29 @@ impl MirAnalyzer {
                             index_expr.as_str()
                         ),
                         fix_suggestion: "在进行指针操作前添加显式的边界检查：if i < buffer.len() { ... }".to_string(),
+                        code_fix: None,
                     });
                 }
             }
         }
 
+        // After detecting each overflow, generate a fix
+        if let Some(rectifier) = &self.rectifier {
+            for overflow in &mut self.buffer_overflows {
+                if let Ok(fix) = rectifier.generate_fix(overflow) {
+                    overflow.code_fix = Some(fix);
+                }
+            }
+        }
+
         Ok(())
+    }
+
+    pub fn get_fixes(&self) -> Vec<&BufferOverflow> {
+        self.buffer_overflows.iter().collect()
+    }
+
+    pub fn get_rectifier(&self) -> &Rectifier {
+        self.rectifier.as_ref().expect("Rectifier not initialized")
     }
 }
