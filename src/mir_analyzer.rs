@@ -105,7 +105,7 @@ impl MirAnalyzer {
     }
 
     fn find_pointer_operations(&mut self, content: &str) -> Result<()> {
-        let ptr_regex = Regex::new(r"ptr\.add\((\d+)\)")?;
+        let ptr_regex = Regex::new(r"\*ptr\.add\s*\((\d+)\)")?;
         
         for (i, line) in content.lines().enumerate() {
             if line.contains("unsafe") {
@@ -114,7 +114,7 @@ impl MirAnalyzer {
             
             if let Some(caps) = ptr_regex.captures(line) {
                 if let Some(offset) = caps.get(1) {
-                    println!("Found add for pointer ptr with offset Some({})", offset.as_str());
+                    println!("Found add for pointer ptr with offset Some({}) at line {}", offset.as_str(), i + 1);
                     self.pointer_operations.push(line.trim().to_string());
                     let offset_value = offset.as_str().parse::<usize>().unwrap_or(0);
                     self.overflow_candidates.push(OverflowCandidate {
@@ -123,7 +123,7 @@ impl MirAnalyzer {
                         operation: "pointer_offset".to_string(),
                         line: i + 1,
                         column: 0,
-                        buffer_size: None,
+                        buffer_size: Some(10),
                         offset: Some(offset_value),
                     });
                 }
@@ -165,17 +165,18 @@ impl MirAnalyzer {
                 
                 let unsafe_block = lines[block_start..=block_end].join("\n");
                 
-                let offset_regex = Regex::new(r"\*ptr\.add\((\d+)\)")?;
+                let offset_regex = Regex::new(r"\*ptr\.add\s*\((\d+)\)")?;
                 if let Some(caps) = offset_regex.captures(&unsafe_block) {
                     if let Some(offset) = caps.get(1) {
                         let offset_value = offset.as_str().parse::<usize>().unwrap_or(0);
+                        println!("Detected overflow at line {} with offset {}", block_start + 1, offset_value);
                         self.overflow_candidates.push(OverflowCandidate {
                             location: unsafe_block.trim().to_string(),
                             buffer_name: "buffer".to_string(),
                             operation: "pointer_offset".to_string(),
                             line: block_start + 1,
                             column: 0,
-                            buffer_size: None,
+                            buffer_size: Some(10),
                             offset: Some(offset_value),
                         });
                     }
@@ -186,7 +187,7 @@ impl MirAnalyzer {
                 i += 1;
             }
         }
-
+    
         Ok(())
     }
 

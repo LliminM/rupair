@@ -40,7 +40,7 @@ impl RuPair {
         let mut analyzer = MirAnalyzer::new(self.output_dir.clone());
         analyzer.set_source_file(self.source_file.clone());
         analyzer.analyze()?;
-
+    
         let candidates = analyzer.get_fixes();
         let rectifier = Rectifier::new(self.source_file.clone());
         let solver = analyzer.get_solver();
@@ -55,25 +55,34 @@ impl RuPair {
                 fixes.push(fix);
             }
         }
-
+    
         // 调试：打印 fixes
         println!("Generated {} fixes", fixes.len());
         for fix in &fixes {
             println!("Fix: {:?}", fix);
         }
-
+    
         // 替换修复代码
         for fix in &fixes {
-            let re = Regex::new(r"(?s)unsafe\s*\{[^{}]*\*ptr\.add\(\d+\)[^{}]*\}").unwrap();
-            if let Some(_pos) = fixed.find(&fix.original_code) {
+            let re = Regex::new(r"(?s)unsafe\s*\{[^{}]*\*ptr\.add\s*\(\d+\)[^{}]*\}").unwrap();
+            if re.is_match(&fixed) {
                 fixed = re.replace(&fixed, &fix.fixed_code).to_string();
             } else {
-                println!("Warning: Could not find original code: {}", fix.original_code);
-                // 后备替换：直接替换整个 unsafe 块
-                fixed = re.replace(&fixed, &fix.fixed_code).to_string();
+                println!("Warning: Could not find unsafe block for fix: {:?}", fix);
+                // 后备替换：基于行号
+                let lines: Vec<&str> = fixed.lines().collect();
+                if fix.location.contains("Line") {
+                    if let Ok(line_num) = fix.location.replace("Line ", "").parse::<usize>() {
+                        if line_num > 0 && line_num <= lines.len() {
+                            let mut new_lines = lines.to_vec();
+                            new_lines[line_num - 1] = &fix.fixed_code;
+                            fixed = new_lines.join("\n");
+                        }
+                    }
+                }
             }
         }
-
+    
         let mut report = String::from("# Buffer Overflow Analysis Report\n\n");
         report.push_str("## Analysis Overview\n\n");
         report.push_str(&format!("- Source File: {}\n", self.source_file.display()));
@@ -96,7 +105,7 @@ impl RuPair {
                 report.push_str("\n```\n\n");
             }
         }
-
+    
         Ok((fixed, report))
     }
 }

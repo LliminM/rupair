@@ -63,18 +63,49 @@ impl Rectifier {
         let content = fs::read_to_string(&self.source_file)?;
         let lines: Vec<&str> = content.lines().collect();
         
-        // 使用行号定位
         let line_num = candidate.line;
         let line = if line_num > 0 && line_num <= lines.len() {
             lines[line_num - 1].to_string()
         } else {
             candidate.location.clone()
         };
-
-        let original_code = line;
+    
+        let original_code = if line.contains("*ptr.add") {
+            let re = Regex::new(r"(?s)unsafe\s*\{[^{}]*\*ptr\.add\(\d+\)[^{}]*\}").unwrap();
+            let mut unsafe_block = String::new();
+            let mut in_unsafe = false;
+            let mut brace_count = 0;
+            for (i, l) in lines.iter().enumerate() {
+                if l.contains("unsafe") {
+                    in_unsafe = true;
+                    brace_count = 0;
+                    unsafe_block.clear();
+                }
+                if in_unsafe {
+                    unsafe_block.push_str(l);
+                    unsafe_block.push('\n');
+                    if l.contains("{") {
+                        brace_count += 1;
+                    }
+                    if l.contains("}") {
+                        brace_count -= 1;
+                        if brace_count == 0 {
+                            in_unsafe = false;
+                            if unsafe_block.contains("*ptr.add") {
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+            unsafe_block.trim().to_string()
+        } else {
+            line
+        };
+    
         let fix_type = self.determine_fix_type(candidate, constraint);
         let fixed_code = self.generate_fixed_code(candidate, constraint, &fix_type);
-
+    
         Ok(CodeFix {
             original_code,
             fixed_code,
@@ -82,35 +113,14 @@ impl Rectifier {
             fix_type,
         })
     }
-
-    fn determine_fix_type(&self, candidate: &OverflowCandidate, constraint: &BufferConstraint) -> FixType {
-        if candidate.operation.contains("unsafe") {
-            FixType::UnsafeToSafe
-        } else if constraint.is_overflow {
-            if constraint.offset > constraint.buffer_size {
-                FixType::VecResize
-            } else {
-                FixType::BoundCheck
-            }
-        } else {
-            FixType::SafeAccess
-        }
-    }
-
+    
     fn generate_fixed_code(&self, _candidate: &OverflowCandidate, constraint: &BufferConstraint, fix_type: &FixType) -> String {
         match fix_type {
-            FixType::BoundCheck => {
+            FixType::BoundCheck | FixType::UnsafeToSafe => {
                 format!(
                     "if {} < buffer.len() {{\n    buffer[{}] = 42;\n}} else {{\n    panic!(\"Buffer overflow prevented: index {}\");\n}}",
                     constraint.offset,
                     constraint.offset,
-                    constraint.offset
-                )
-            },
-            FixType::VecResize => {
-                format!(
-                    "let mut buffer = vec![0; {}];\n    buffer[{}] = 42;",
-                    constraint.offset + 1,
                     constraint.offset
                 )
             },
@@ -121,14 +131,21 @@ impl Rectifier {
                     constraint.offset
                 )
             },
-            FixType::UnsafeToSafe => {
+            FixType::VecResize => {
                 format!(
-                    "if {} < buffer.len() {{\n    buffer[{}] = 42;\n}} else {{\n    panic!(\"Buffer overflow prevented: index {}\");\n}}",
-                    constraint.offset,
+                    "buffer.resize({} + 1, 0);\n    buffer[{}] = 42;",
                     constraint.offset,
                     constraint.offset
                 )
             },
+        }
+    }
+    
+    fn determine_fix_type(&self, candidate: &OverflowCandidate, _constraint: &BufferConstraint) -> FixType {
+        if candidate.operation.contains("unsafe") || candidate.operation.contains("pointer_offset") {
+            FixType::UnsafeToSafe
+        } else {
+            FixType::SafeAccess
         }
     }
     
@@ -192,7 +209,7 @@ impl Rectifier {
         
         Ok(result)
     }
-    
+
     pub fn generate_error_report(&self, candidate: &OverflowCandidate) -> ErrorReport {
         ErrorReport {
             issue_type: candidate.operation.clone(),

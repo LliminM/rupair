@@ -21,12 +21,18 @@ pointer_offset
 
 ### Original Code
 ```rust
+unsafe {
+        let ptr = buffer.as_mut_ptr();
         *ptr.add(15) = 42; // 潜在溢出
+    }
 ```
 
 ### Fixed Code
 ```rust
-let mut buffer = vec![0; 16];
+if 15 < buffer.len() {
     buffer[15] = 42;
+} else {
+    panic!("Buffer overflow prevented: index 15");
+}
 ```
 
