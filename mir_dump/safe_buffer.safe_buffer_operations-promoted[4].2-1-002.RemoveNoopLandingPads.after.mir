@@ -1,0 +1,12 @@
+// MIR for `safe_buffer_operations::promoted[4]` after RemoveNoopLandingPads
+
+const safe_buffer_operations::promoted[4]: &[&str; 2] = {
+    let mut _0: &[&str; 2];
+    let mut _1: [&str; 2];
+
+    bb0: {
+        _1 = [const "安全的切片操作完成: ", const "\n"];
+        _0 = &_1;
+        return;
+    }
+}

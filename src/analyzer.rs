@@ -1,7 +1,6 @@
 use syn::{File, ItemFn, Expr, ExprUnsafe, ExprMethodCall, Pat, Local, visit::{self, Visit}, Lit, ExprLit};
 use std::collections::HashMap;
 
-
 #[derive(Clone, Debug)]
 pub struct OverflowCandidate {
     pub location: String,
@@ -13,14 +12,13 @@ pub struct OverflowCandidate {
     pub offset: Option<usize>,
 }
 
-// 缓冲区和指针的信息
 #[derive(Debug, Clone)]
 struct PointerInfo {
     buffer_name: String,
     buffer_size: Option<usize>,
 }
 
-pub fn find_buffer_overflows(ast: &File, mir_candidates_opt: Option<Vec<OverflowCandidate>>) -> Vec<OverflowCandidate> {
+pub fn find_buffer_overflows(ast: &File, mir_candidates: Vec<OverflowCandidate>) -> Vec<OverflowCandidate> {
     let mut visitor = OverflowVisitor {
         candidates: Vec::new(),
         pointers: HashMap::new(),
@@ -28,12 +26,7 @@ pub fn find_buffer_overflows(ast: &File, mir_candidates_opt: Option<Vec<Overflow
     };
     
     visitor.visit_file(ast);
-    
-    if let Some(mir_candidates) = mir_candidates_opt {
-        // 直接将MIR分析的结果添加到candidates中
-        visitor.candidates.extend(mir_candidates);
-    }
-    
+    visitor.candidates.extend(mir_candidates);
     visitor.candidates
 }
 
@@ -54,10 +47,8 @@ impl<'ast> Visit<'ast> for OverflowVisitor {
             let var_name = pat_ident.ident.to_string();
             
             if let Some(init) = &local.init {
-                // 处理vec!宏
                 if let Expr::Macro(expr_macro) = &*init.expr {
                     if expr_macro.mac.path.is_ident("vec") {
-                        // 尝试提取vec!中的大小
                         let size = extract_vec_size(&expr_macro.mac);
                         println!("Found vec! for {} with size {:?}", var_name, size);
                         self.pointers.insert(var_name.clone(), PointerInfo {
@@ -67,7 +58,6 @@ impl<'ast> Visit<'ast> for OverflowVisitor {
                     }
                 }
                 
-                // 处理指针赋值
                 if let Expr::MethodCall(method_call) = &*init.expr {
                     let method_name = method_call.method.to_string();
                     
@@ -104,17 +94,15 @@ impl<'ast> Visit<'ast> for OverflowVisitor {
                     let ptr_name = ident.to_string();
                     
                     if let Some(ptr_info) = self.pointers.get(&ptr_name) {
-                        // 尝试提取偏移量
                         let offset = extract_offset(&expr.args);
                         
                         println!("Found add for pointer {} with offset {:?}", ptr_name, offset);
                         
-                        // 不再依赖 Span 的行号/列号
                         let line = 0;
                         let column = 0;
                         
                         self.candidates.push(OverflowCandidate {
-                            location: self.current_function.clone(), // 仅使用函数名
+                            location: self.current_function.clone(),
                             buffer_name: ptr_info.buffer_name.clone(),
                             operation: "pointer_offset".to_string(),
                             line,
@@ -140,7 +128,6 @@ impl<'ast> Visit<'ast> for OverflowVisitor {
     }
 }
 
-// 从vec!宏中提取大小
 fn extract_vec_size(mac: &syn::Macro) -> Option<usize> {
     if let syn::MacroDelimiter::Bracket(_) = mac.delimiter {
         if let Ok(tokens) = syn::parse2::<syn::Expr>(mac.tokens.clone()) {
@@ -152,7 +139,6 @@ fn extract_vec_size(mac: &syn::Macro) -> Option<usize> {
     None
 }
 
-// 从add方法的参数中提取偏移量
 fn extract_offset(args: &syn::punctuated::Punctuated<syn::Expr, syn::token::Comma>) -> Option<usize> {
     if let Some(arg) = args.first() {
         if let syn::Expr::Lit(ExprLit { lit: Lit::Int(lit), .. }) = arg {

@@ -1,0 +1,12 @@
+// MIR for `main::promoted[1]` before SimplifyCfg-pre-optimizations
+
+const main::promoted[1]: &[&str; 1] = {
+    let mut _0: &[&str; 1];
+    let mut _1: [&str; 1];
+
+    bb0: {
+        _1 = [const "开始执行安全的缓冲区操作示例...\n\n"];
+        _0 = &_1;
+        return;
+    }
+}

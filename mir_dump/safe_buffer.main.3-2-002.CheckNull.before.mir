@@ -1,0 +1,153 @@
+// MIR for `main` before CheckNull
+
+fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let mut _0: std::result::Result<(), std::boxed::Box<dyn std::error::Error>>;
+    let _1: ();
+    let _2: ();
+    let mut _3: std::fmt::Arguments<'_>;
+    let mut _4: &[&str; 1];
+    let _5: &[&str; 1];
+    let _6: [&str; 1];
+    let _7: ();
+    let mut _8: std::ops::ControlFlow<std::result::Result<std::convert::Infallible, std::boxed::Box<dyn std::error::Error>>>;
+    let mut _9: std::result::Result<(), std::boxed::Box<dyn std::error::Error>>;
+    let mut _10: isize;
+    let _11: std::result::Result<std::convert::Infallible, std::boxed::Box<dyn std::error::Error>>;
+    let mut _12: !;
+    let mut _13: std::result::Result<std::convert::Infallible, std::boxed::Box<dyn std::error::Error>>;
+    let _14: ();
+    let _15: ();
+    let _16: ();
+    let mut _17: std::fmt::Arguments<'_>;
+    let mut _18: &[&str; 1];
+    let _19: &[&str; 1];
+    let _20: [&str; 1];
+    let mut _21: ();
+    let mut _22: &[&str; 1];
+    let mut _23: &[&str; 1];
+    let mut _24: isize;
+    let mut _25: isize;
+    let mut _26: isize;
+    let mut _27: isize;
+    let mut _28: isize;
+    scope 1 {
+        debug residual => _11;
+        scope 2 {
+        }
+    }
+    scope 3 {
+        debug val => _14;
+        scope 4 {
+        }
+    }
+
+    bb0: {
+        StorageLive(_1);
+        StorageLive(_2);
+        StorageLive(_3);
+        StorageLive(_4);
+        StorageLive(_5);
+        _23 = const main::promoted[1];
+        _5 = &(*_23);
+        _4 = &(*_5);
+        _3 = core::fmt::rt::<impl Arguments<'_>>::new_const::<1>(move _4) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        StorageDead(_4);
+        _2 = _print(move _3) -> [return: bb2, unwind continue];
+    }
+
+    bb2: {
+        StorageDead(_3);
+        StorageDead(_5);
+        StorageDead(_2);
+        _1 = const ();
+        StorageDead(_1);
+        StorageLive(_7);
+        StorageLive(_8);
+        StorageLive(_9);
+        _9 = safe_buffer_operations() -> [return: bb3, unwind continue];
+    }
+
+    bb3: {
+        _8 = <Result<(), Box<dyn std::error::Error>> as Try>::branch(move _9) -> [return: bb4, unwind: bb12];
+    }
+
+    bb4: {
+        StorageDead(_9);
+        _10 = discriminant(_8);
+        switchInt(move _10) -> [0: bb6, 1: bb7, otherwise: bb5];
+    }
+
+    bb5: {
+        unreachable;
+    }
+
+    bb6: {
+        StorageLive(_14);
+        _14 = copy ((_8 as Continue).0: ());
+        _7 = copy _14;
+        StorageDead(_14);
+        _24 = discriminant(_8);
+        StorageDead(_8);
+        StorageDead(_7);
+        StorageLive(_15);
+        StorageLive(_16);
+        StorageLive(_17);
+        StorageLive(_18);
+        StorageLive(_19);
+        _22 = const main::promoted[0];
+        _19 = &(*_22);
+        _18 = &(*_19);
+        _17 = core::fmt::rt::<impl Arguments<'_>>::new_const::<1>(move _18) -> [return: bb9, unwind continue];
+    }
+
+    bb7: {
+        StorageLive(_11);
+        _11 = move ((_8 as Break).0: std::result::Result<std::convert::Infallible, std::boxed::Box<dyn std::error::Error>>);
+        StorageLive(_13);
+        _13 = move _11;
+        _0 = <Result<(), Box<dyn std::error::Error>> as FromResidual<Result<Infallible, Box<dyn std::error::Error>>>>::from_residual(move _13) -> [return: bb8, unwind: bb13];
+    }
+
+    bb8: {
+        StorageDead(_13);
+        StorageDead(_11);
+        _26 = discriminant(_8);
+        StorageDead(_8);
+        StorageDead(_7);
+        goto -> bb11;
+    }
+
+    bb9: {
+        StorageDead(_18);
+        _16 = _print(move _17) -> [return: bb10, unwind continue];
+    }
+
+    bb10: {
+        StorageDead(_17);
+        StorageDead(_19);
+        StorageDead(_16);
+        _15 = const ();
+        StorageDead(_15);
+        StorageLive(_21);
+        _21 = ();
+        _0 = Result::<(), Box<dyn std::error::Error>>::Ok(move _21);
+        StorageDead(_21);
+        goto -> bb11;
+    }
+
+    bb11: {
+        return;
+    }
+
+    bb12 (cleanup): {
+        resume;
+    }
+
+    bb13 (cleanup): {
+        _28 = discriminant(_8);
+        goto -> bb12;
+    }
+}

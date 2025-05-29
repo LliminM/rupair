@@ -1,0 +1,12 @@
+// MIR for `test_buffer_overflow::promoted[0]` before ElaborateBoxDerefs
+
+const test_buffer_overflow::promoted[0]: &[&str; 2] = {
+    let mut _0: &[&str; 2];
+    let mut _1: [&str; 2];
+
+    bb0: {
+        _1 = [const "Value: ", const "\n"];
+        _0 = &_1;
+        return;
+    }
+}

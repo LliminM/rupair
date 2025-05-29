@@ -1,0 +1,811 @@
+// MIR for `test_buffer_overflow` 0 nll
+
+| Free Region Mapping
+| '?0 | Global | ['?0, '?1]
+| '?1 | Local | ['?1]
+|
+| Inferred Region Values
+| '?0 | U0 | {bb0[0..=1], bb1[0..=5], bb2[0..=4], bb3[0], bb4[0..=6], bb5[0..=3], bb6[0..=1], bb7[0], bb8[0..=9], bb9[0..=10], bb10[0..=11], bb11[0..=6], bb12[0..=10], bb13[0..=5], bb14[0], bb15[0..=2], bb16[0..=3], bb17[0..=9], bb18[0..=2], bb19[0..=1], bb20[0..=1], bb21[0..=4], bb22[0], bb23[0..=6], bb24[0..=3], bb25[0..=1], bb26[0], bb27[0..=11], bb28[0..=11], bb29[0..=12], bb30[0..=6], bb31[0..=20], bb32[0..=5], bb33[0..=2], bb34[0..=11], bb35[0..=1], bb36[0..=2], bb37[0..=1], bb38[0], bb39[0], bb40[0], bb41[0], bb42[0], bb43[0], '?0, '?1}
+| '?1 | U0 | {bb0[0..=1], bb1[0..=5], bb2[0..=4], bb3[0], bb4[0..=6], bb5[0..=3], bb6[0..=1], bb7[0], bb8[0..=9], bb9[0..=10], bb10[0..=11], bb11[0..=6], bb12[0..=10], bb13[0..=5], bb14[0], bb15[0..=2], bb16[0..=3], bb17[0..=9], bb18[0..=2], bb19[0..=1], bb20[0..=1], bb21[0..=4], bb22[0], bb23[0..=6], bb24[0..=3], bb25[0..=1], bb26[0], bb27[0..=11], bb28[0..=11], bb29[0..=12], bb30[0..=6], bb31[0..=20], bb32[0..=5], bb33[0..=2], bb34[0..=11], bb35[0..=1], bb36[0..=2], bb37[0..=1], bb38[0], bb39[0], bb40[0], bb41[0], bb42[0], bb43[0], '?1}
+| '?2 | U0 | {bb0[0..=1], bb1[0..=5], bb2[0..=4], bb3[0], bb4[0..=6], bb5[0..=3], bb6[0..=1], bb7[0], bb8[0..=9], bb9[0..=10], bb10[0..=11], bb11[0..=6], bb12[0..=10], bb13[0..=5], bb14[0], bb15[0..=2], bb16[0..=3], bb17[0..=9], bb18[0..=2], bb19[0..=1], bb20[0..=1], bb21[0..=4], bb22[0], bb23[0..=6], bb24[0..=3], bb25[0..=1], bb26[0], bb27[0..=11], bb28[0..=11], bb29[0..=12], bb30[0..=6], bb31[0..=20], bb32[0..=5], bb33[0..=2], bb34[0..=11], bb35[0..=1], bb36[0..=2], bb37[0..=1], bb38[0], bb39[0], bb40[0], bb41[0], bb42[0], bb43[0], '?0, '?1}
+| '?3 | U0 | {bb0[0..=1], bb1[0..=5], bb2[0..=4], bb3[0], bb4[0..=6], bb5[0..=3], bb6[0..=1], bb7[0], bb8[0..=9], bb9[0..=10], bb10[0..=11], bb11[0..=6], bb12[0..=10], bb13[0..=5], bb14[0], bb15[0..=2], bb16[0..=3], bb17[0..=9], bb18[0..=2], bb19[0..=1], bb20[0..=1], bb21[0..=4], bb22[0], bb23[0..=6], bb24[0..=3], bb25[0..=1], bb26[0], bb27[0..=11], bb28[0..=11], bb29[0..=12], bb30[0..=6], bb31[0..=20], bb32[0..=5], bb33[0..=2], bb34[0..=11], bb35[0..=1], bb36[0..=2], bb37[0..=1], bb38[0], bb39[0], bb40[0], bb41[0], bb42[0], bb43[0], '?0, '?1}
+| '?4 | U0 | {bb0[0..=1], bb1[0..=5], bb2[0..=4], bb3[0], bb4[0..=6], bb5[0..=3], bb6[0..=1], bb7[0], bb8[0..=9], bb9[0..=10], bb10[0..=11], bb11[0..=6], bb12[0..=10], bb13[0..=5], bb14[0], bb15[0..=2], bb16[0..=3], bb17[0..=9], bb18[0..=2], bb19[0..=1], bb20[0..=1], bb21[0..=4], bb22[0], bb23[0..=6], bb24[0..=3], bb25[0..=1], bb26[0], bb27[0..=11], bb28[0..=11], bb29[0..=12], bb30[0..=6], bb31[0..=20], bb32[0..=5], bb33[0..=2], bb34[0..=11], bb35[0..=1], bb36[0..=2], bb37[0..=1], bb38[0], bb39[0], bb40[0], bb41[0], bb42[0], bb43[0], '?0, '?1}
+| '?5 | U0 | {bb31[9..=20], bb32[0..=5], bb33[0..=2]}
+| '?6 | U0 | {bb31[9..=20], bb32[0..=5], bb33[0..=2]}
+| '?7 | U0 | {bb0[0..=1], bb1[0..=5], bb2[0..=4], bb3[0], bb4[0..=6], bb5[0..=3], bb6[0..=1], bb7[0], bb8[0..=9], bb9[0..=10], bb10[0..=11], bb11[0..=6], bb12[0..=10], bb13[0..=5], bb14[0], bb15[0..=2], bb16[0..=3], bb17[0..=9], bb18[0..=2], bb19[0..=1], bb20[0..=1], bb21[0..=4], bb22[0], bb23[0..=6], bb24[0..=3], bb25[0..=1], bb26[0], bb27[0..=11], bb28[0..=11], bb29[0..=12], bb30[0..=6], bb31[0..=20], bb32[0..=5], bb33[0..=2], bb34[0..=11], bb35[0..=1], bb36[0..=2], bb37[0..=1], bb38[0], bb39[0], bb40[0], bb41[0], bb42[0], bb43[0], '?0, '?1}
+| '?8 | U0 | {bb0[0..=1], bb1[0..=5], bb2[0..=4], bb3[0], bb4[0..=6], bb5[0..=3], bb6[0..=1], bb7[0], bb8[0..=9], bb9[0..=10], bb10[0..=11], bb11[0..=6], bb12[0..=10], bb13[0..=5], bb14[0], bb15[0..=2], bb16[0..=3], bb17[0..=9], bb18[0..=2], bb19[0..=1], bb20[0..=1], bb21[0..=4], bb22[0], bb23[0..=6], bb24[0..=3], bb25[0..=1], bb26[0], bb27[0..=11], bb28[0..=11], bb29[0..=12], bb30[0..=6], bb31[0..=20], bb32[0..=5], bb33[0..=2], bb34[0..=11], bb35[0..=1], bb36[0..=2], bb37[0..=1], bb38[0], bb39[0], bb40[0], bb41[0], bb42[0], bb43[0], '?0, '?1}
+| '?9 | U0 | {bb4[4..=6]}
+| '?10 | U0 | {bb4[5..=6]}
+| '?11 | U0 | {bb8[6..=9], bb10[0..=2]}
+| '?12 | U0 | {bb9[9..=10]}
+| '?13 | U0 | {bb17[8..=9], bb18[0..=2], bb19[0..=1], bb20[0..=1], bb21[0..=4], bb22[0], bb23[0..=6], bb24[0..=3], bb25[0], bb26[0], bb27[0..=11], bb29[0..=12]}
+| '?14 | U0 | {bb18[0..=2], bb19[0..=1], bb20[0..=1], bb21[0..=4], bb22[0], bb23[0..=6], bb24[0..=3], bb25[0], bb26[0], bb27[0..=11], bb29[0..=12]}
+| '?15 | U0 | {bb19[1], bb20[0..=1], bb21[0..=4], bb22[0], bb23[0..=6], bb24[0..=3], bb25[0], bb26[0], bb27[0..=11], bb29[0..=12]}
+| '?16 | U0 | {bb20[1], bb21[0..=4], bb22[0], bb23[0..=6], bb24[0..=3], bb25[0], bb26[0], bb27[0..=11], bb29[0..=12]}
+| '?17 | U0 | {bb23[4..=6]}
+| '?18 | U0 | {bb23[5..=6]}
+| '?19 | U0 | {bb21[4], bb22[0], bb23[0..=6], bb24[0..=3], bb25[0], bb26[0], bb27[0..=11], bb29[0..=12]}
+| '?20 | U0 | {bb27[1]}
+| '?21 | U0 | {bb27[3]}
+| '?22 | U0 | {bb27[3]}
+| '?23 | U0 | {bb27[8..=11], bb29[0..=2]}
+| '?24 | U0 | {bb28[10..=11]}
+| '?25 | U0 | {bb31[9..=20], bb32[0..=5], bb33[0..=2]}
+| '?26 | U0 | {bb0[0..=1], bb1[0..=5], bb2[0..=4], bb3[0], bb4[0..=6], bb5[0..=3], bb6[0..=1], bb7[0], bb8[0..=9], bb9[0..=10], bb10[0..=11], bb11[0..=6], bb12[0..=10], bb13[0..=5], bb14[0], bb15[0..=2], bb16[0..=3], bb17[0..=9], bb18[0..=2], bb19[0..=1], bb20[0..=1], bb21[0..=4], bb22[0], bb23[0..=6], bb24[0..=3], bb25[0..=1], bb26[0], bb27[0..=11], bb28[0..=11], bb29[0..=12], bb30[0..=6], bb31[0..=20], bb32[0..=5], bb33[0..=2], bb34[0..=11], bb35[0..=1], bb36[0..=2], bb37[0..=1], bb38[0], bb39[0], bb40[0], bb41[0], bb42[0], bb43[0], '?0, '?1}
+| '?27 | U0 | {bb31[10..=20], bb32[0..=5], bb33[0..=2]}
+| '?28 | U0 | {bb31[11..=20], bb32[0..=5], bb33[0..=2]}
+| '?29 | U0 | {bb31[18..=20], bb32[0..=5], bb33[0..=2]}
+| '?30 | U0 | {bb31[19..=20], bb32[0..=5], bb33[0..=2]}
+| '?31 | U0 | {bb31[20]}
+| '?32 | U0 | {bb32[1..=5], bb33[0..=2]}
+| '?33 | U0 | {bb32[3..=5], bb33[0..=2]}
+| '?34 | U0 | {bb32[4..=5], bb33[0..=2]}
+| '?35 | U0 | {bb32[5], bb33[0..=2]}
+| '?36 | U0 | {bb4[6]}
+| '?37 | U0 | {bb4[5..=6]}
+| '?38 | U0 | {bb10[0..=2]}
+| '?39 | U0 | {bb8[7..=9], bb10[0..=2]}
+| '?40 | U0 | {bb9[10]}
+| '?41 | U0 | {bb21[0..=4], bb22[0], bb23[0..=6], bb24[0..=3], bb25[0], bb26[0], bb27[0..=11], bb29[0..=12]}
+| '?42 | U0 | {bb20[0..=1], bb21[0..=4], bb22[0], bb23[0..=6], bb24[0..=3], bb25[0], bb26[0], bb27[0..=11], bb29[0..=12]}
+| '?43 | U0 | {bb19[0..=1], bb20[0..=1], bb21[0..=4], bb22[0], bb23[0..=6], bb24[0..=3], bb25[0], bb26[0], bb27[0..=11], bb29[0..=12]}
+| '?44 | U0 | {bb18[1..=2], bb19[0..=1], bb20[0..=1], bb21[0..=4], bb22[0], bb23[0..=6], bb24[0..=3], bb25[0], bb26[0], bb27[0..=11], bb29[0..=12]}
+| '?45 | U0 | {bb18[0..=2], bb19[0..=1], bb20[0..=1], bb21[0..=4], bb22[0], bb23[0..=6], bb24[0..=3], bb25[0], bb26[0], bb27[0..=11], bb29[0..=12]}
+| '?46 | U0 | {bb17[9], bb18[0..=2], bb19[0..=1], bb20[0..=1], bb21[0..=4], bb22[0], bb23[0..=6], bb24[0..=3], bb25[0], bb26[0], bb27[0..=11], bb29[0..=12]}
+| '?47 | U0 | {bb21[4], bb22[0], bb23[0..=6], bb24[0..=3], bb25[0], bb26[0], bb27[0..=11], bb29[0..=12]}
+| '?48 | U0 | {bb24[0..=3], bb25[0], bb26[0], bb27[0..=3]}
+| '?49 | U0 | {bb23[6]}
+| '?50 | U0 | {bb21[4], bb22[0], bb23[0..=6], bb24[0..=3], bb25[0], bb26[0], bb27[0..=11], bb29[0..=12]}
+| '?51 | U0 | {bb23[5..=6]}
+| '?52 | U0 | {bb21[4], bb22[0], bb23[0..=6], bb24[0..=3], bb25[0], bb26[0], bb27[0..=11], bb29[0..=12]}
+| '?53 | U0 | {bb29[0..=2]}
+| '?54 | U0 | {bb27[9..=11], bb29[0..=2]}
+| '?55 | U0 | {bb28[11]}
+| '?56 | U0 | {bb33[0..=2]}
+| '?57 | U0 | {bb31[12..=20], bb32[0..=5], bb33[0..=2]}
+| '?58 | U0 | {bb0[0..=1], bb1[0..=5], bb2[0..=4], bb3[0], bb4[0..=6], bb5[0..=3], bb6[0..=1], bb7[0], bb8[0..=9], bb9[0..=10], bb10[0..=11], bb11[0..=6], bb12[0..=10], bb13[0..=5], bb14[0], bb15[0..=2], bb16[0..=3], bb17[0..=9], bb18[0..=2], bb19[0..=1], bb20[0..=1], bb21[0..=4], bb22[0], bb23[0..=6], bb24[0..=3], bb25[0..=1], bb26[0], bb27[0..=11], bb28[0..=11], bb29[0..=12], bb30[0..=6], bb31[0..=20], bb32[0..=5], bb33[0..=2], bb34[0..=11], bb35[0..=1], bb36[0..=2], bb37[0..=1], bb38[0], bb39[0], bb40[0], bb41[0], bb42[0], bb43[0], '?0, '?1}
+| '?59 | U0 | {bb31[11..=20], bb32[0..=5], bb33[0..=2]}
+| '?60 | U0 | {bb0[0..=1], bb1[0..=5], bb2[0..=4], bb3[0], bb4[0..=6], bb5[0..=3], bb6[0..=1], bb7[0], bb8[0..=9], bb9[0..=10], bb10[0..=11], bb11[0..=6], bb12[0..=10], bb13[0..=5], bb14[0], bb15[0..=2], bb16[0..=3], bb17[0..=9], bb18[0..=2], bb19[0..=1], bb20[0..=1], bb21[0..=4], bb22[0], bb23[0..=6], bb24[0..=3], bb25[0..=1], bb26[0], bb27[0..=11], bb28[0..=11], bb29[0..=12], bb30[0..=6], bb31[0..=20], bb32[0..=5], bb33[0..=2], bb34[0..=11], bb35[0..=1], bb36[0..=2], bb37[0..=1], bb38[0], bb39[0], bb40[0], bb41[0], bb42[0], bb43[0], '?0, '?1}
+| '?61 | U0 | {}
+| '?62 | U0 | {bb32[5], bb33[0..=2]}
+| '?63 | U0 | {bb32[5], bb33[0..=2]}
+| '?64 | U0 | {bb32[4..=5], bb33[0..=2]}
+| '?65 | U0 | {bb32[4..=5], bb33[0..=2]}
+| '?66 | U0 | {bb32[2..=5], bb33[0..=2]}
+| '?67 | U0 | {bb32[0..=5], bb33[0..=2]}
+| '?68 | U0 | {bb31[20], bb32[0..=5], bb33[0..=2]}
+| '?69 | U0 | {bb31[19..=20], bb32[0..=5], bb33[0..=2]}
+| '?70 | U0 | {bb31[10..=20], bb32[0..=5], bb33[0..=2]}
+| '?71 | U0 | {bb0[0..=1], bb1[0..=5], bb2[0..=4], bb3[0], bb4[0..=6], bb5[0..=3], bb6[0..=1], bb7[0], bb8[0..=9], bb9[0..=10], bb10[0..=11], bb11[0..=6], bb12[0..=10], bb13[0..=5], bb14[0], bb15[0..=2], bb16[0..=3], bb17[0..=9], bb18[0..=2], bb19[0..=1], bb20[0..=1], bb21[0..=4], bb22[0], bb23[0..=6], bb24[0..=3], bb25[0..=1], bb26[0], bb27[0..=11], bb28[0..=11], bb29[0..=12], bb30[0..=6], bb31[0..=20], bb32[0..=5], bb33[0..=2], bb34[0..=11], bb35[0..=1], bb36[0..=2], bb37[0..=1], bb38[0], bb39[0], bb40[0], bb41[0], bb42[0], bb43[0], '?0, '?1}
+| '?72 | U0 | {bb32[5], bb33[0..=2]}
+| '?73 | U0 | {bb31[20]}
+| '?74 | U0 | {bb32[5], bb33[0..=2]}
+| '?75 | U0 | {bb32[5], bb33[0..=2]}
+| '?76 | U0 | {bb31[20]}
+| '?77 | U0 | {bb31[20]}
+| '?78 | U0 | {bb4[6]}
+| '?79 | U0 | {bb8[9], bb10[0..=2]}
+| '?80 | U0 | {bb9[10]}
+| '?81 | U0 | {bb17[9], bb18[0..=2], bb19[0..=1], bb20[0..=1], bb21[0..=4], bb22[0], bb23[0..=6], bb24[0..=3], bb25[0], bb26[0], bb27[0..=11], bb29[0..=12]}
+| '?82 | U0 | {bb18[2], bb19[0..=1], bb20[0..=1], bb21[0..=4], bb22[0], bb23[0..=6], bb24[0..=3], bb25[0], bb26[0], bb27[0..=11], bb29[0..=12]}
+| '?83 | U0 | {bb23[6]}
+| '?84 | U0 | {bb27[11], bb29[0..=2]}
+| '?85 | U0 | {bb28[11]}
+| '?86 | U0 | {bb31[20], bb32[0..=5], bb33[0..=2]}
+| '?87 | U0 | {bb33[2]}
+|
+| Inference Constraints
+| '?0 live at {bb0[0..=1], bb1[0..=5], bb2[0..=4], bb3[0], bb4[0..=6], bb5[0..=3], bb6[0..=1], bb7[0], bb8[0..=9], bb9[0..=10], bb10[0..=11], bb11[0..=6], bb12[0..=10], bb13[0..=5], bb14[0], bb15[0..=2], bb16[0..=3], bb17[0..=9], bb18[0..=2], bb19[0..=1], bb20[0..=1], bb21[0..=4], bb22[0], bb23[0..=6], bb24[0..=3], bb25[0..=1], bb26[0], bb27[0..=11], bb28[0..=11], bb29[0..=12], bb30[0..=6], bb31[0..=20], bb32[0..=5], bb33[0..=2], bb34[0..=11], bb35[0..=1], bb36[0..=2], bb37[0..=1], bb38[0], bb39[0], bb40[0], bb41[0], bb42[0], bb43[0]}
+| '?1 live at {bb0[0..=1], bb1[0..=5], bb2[0..=4], bb3[0], bb4[0..=6], bb5[0..=3], bb6[0..=1], bb7[0], bb8[0..=9], bb9[0..=10], bb10[0..=11], bb11[0..=6], bb12[0..=10], bb13[0..=5], bb14[0], bb15[0..=2], bb16[0..=3], bb17[0..=9], bb18[0..=2], bb19[0..=1], bb20[0..=1], bb21[0..=4], bb22[0], bb23[0..=6], bb24[0..=3], bb25[0..=1], bb26[0], bb27[0..=11], bb28[0..=11], bb29[0..=12], bb30[0..=6], bb31[0..=20], bb32[0..=5], bb33[0..=2], bb34[0..=11], bb35[0..=1], bb36[0..=2], bb37[0..=1], bb38[0], bb39[0], bb40[0], bb41[0], bb42[0], bb43[0]}
+| '?3 live at {bb31[9]}
+| '?4 live at {bb31[9]}
+| '?9 live at {bb4[4]}
+| '?10 live at {bb4[5]}
+| '?11 live at {bb8[6]}
+| '?12 live at {bb9[9]}
+| '?13 live at {bb17[8]}
+| '?14 live at {bb18[0]}
+| '?15 live at {bb19[1]}
+| '?16 live at {bb20[1]}
+| '?17 live at {bb23[4]}
+| '?18 live at {bb23[5]}
+| '?19 live at {bb23[6]}
+| '?20 live at {bb27[1]}
+| '?21 live at {bb27[3]}
+| '?22 live at {bb27[3]}
+| '?23 live at {bb27[8]}
+| '?24 live at {bb28[10]}
+| '?25 live at {bb31[9]}
+| '?26 live at {bb31[9]}
+| '?27 live at {bb31[10]}
+| '?28 live at {bb31[11]}
+| '?29 live at {bb31[18]}
+| '?30 live at {bb31[19]}
+| '?31 live at {bb31[20]}
+| '?32 live at {bb32[1]}
+| '?33 live at {bb32[3]}
+| '?34 live at {bb32[4]}
+| '?35 live at {bb32[5]}
+| '?36 live at {bb4[6]}
+| '?37 live at {bb4[5]}
+| '?38 live at {bb10[0..=2]}
+| '?39 live at {bb8[7..=9]}
+| '?40 live at {bb9[10]}
+| '?41 live at {bb21[0..=3]}
+| '?42 live at {bb20[0..=1]}
+| '?43 live at {bb19[0..=1]}
+| '?44 live at {bb18[1..=2]}
+| '?45 live at {bb18[0]}
+| '?46 live at {bb17[9]}
+| '?47 live at {bb21[4], bb22[0], bb23[0..=6], bb24[0..=3], bb26[0], bb27[0..=11], bb29[0..=12]}
+| '?48 live at {bb24[0..=3], bb25[0], bb26[0], bb27[0..=3]}
+| '?49 live at {bb23[6]}
+| '?50 live at {bb23[6]}
+| '?51 live at {bb23[5]}
+| '?52 live at {bb23[5]}
+| '?53 live at {bb29[0..=2]}
+| '?54 live at {bb27[9..=11]}
+| '?55 live at {bb28[11]}
+| '?56 live at {bb33[0..=2]}
+| '?57 live at {bb31[12..=20], bb32[0..=5]}
+| '?58 live at {bb31[12..=20], bb32[0..=5]}
+| '?59 live at {bb31[11]}
+| '?60 live at {bb31[11]}
+| '?62 live at {bb32[5]}
+| '?63 live at {bb32[5]}
+| '?64 live at {bb32[4]}
+| '?65 live at {bb32[4]}
+| '?66 live at {bb32[2..=3]}
+| '?67 live at {bb32[0..=1]}
+| '?68 live at {bb31[20]}
+| '?69 live at {bb31[19]}
+| '?70 live at {bb31[10]}
+| '?71 live at {bb31[10]}
+| '?78 live at {bb4[6]}
+| '?79 live at {bb8[9]}
+| '?80 live at {bb9[10]}
+| '?81 live at {bb17[9]}
+| '?82 live at {bb18[2]}
+| '?83 live at {bb23[6]}
+| '?84 live at {bb27[11]}
+| '?85 live at {bb28[11]}
+| '?86 live at {bb31[20]}
+| '?87 live at {bb33[2]}
+| '?0: '?35 due to BoringNoLocation at Single(bb32[5]) (C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\std\src\macros.rs:143:28: 143:61 (#8)
+| '?2: '?8 due to Boring at Single(bb31[9]) (examples/buffer_overflow_test.rs:25:18: 25:29 (#0)
+| '?3: '?2 due to Boring at Single(bb31[9]) (examples/buffer_overflow_test.rs:25:18: 25:29 (#0)
+| '?4: '?2 due to Boring at Single(bb31[9]) (examples/buffer_overflow_test.rs:25:18: 25:29 (#0)
+| '?5: '?6 due to Boring at Single(bb31[9]) (examples/buffer_overflow_test.rs:25:18: 25:29 (#0)
+| '?6: '?25 due to Boring at Single(bb31[9]) (examples/buffer_overflow_test.rs:25:18: 25:29 (#0)
+| '?7: '?26 due to Boring at Single(bb31[9]) (examples/buffer_overflow_test.rs:25:18: 25:29 (#0)
+| '?8: '?7 due to Boring at Single(bb31[9]) (examples/buffer_overflow_test.rs:25:18: 25:29 (#0)
+| '?9: '?37 due to Boring at Single(bb4[4]) (examples/buffer_overflow_test.rs:4:14: 4:19 (#11)
+| '?10: '?36 due to Boring at Single(bb4[5]) (examples/buffer_overflow_test.rs:4:14: 4:19 (#11)
+| '?11: '?39 due to Boring at Single(bb8[6]) (examples/buffer_overflow_test.rs:5:9: 5:15 (#0)
+| '?12: '?40 due to Boring at Single(bb9[9]) (examples/buffer_overflow_test.rs:9:15: 9:21 (#0)
+| '?13: '?46 due to Boring at Single(bb17[8]) (examples/buffer_overflow_test.rs:17:23: 17:27 (#0)
+| '?14: '?44 due to Boring at Single(bb18[0]) (examples/buffer_overflow_test.rs:17:23: 17:27 (#0)
+| '?15: '?42 due to Boring at Single(bb19[1]) (examples/buffer_overflow_test.rs:17:23: 17:46 (#0)
+| '?16: '?41 due to Boring at Single(bb20[1]) (examples/buffer_overflow_test.rs:17:23: 17:46 (#14)
+| '?17: '?51 due to Boring at Single(bb23[4]) (examples/buffer_overflow_test.rs:17:23: 17:46 (#14)
+| '?18: '?49 due to Boring at Single(bb23[5]) (examples/buffer_overflow_test.rs:17:23: 17:46 (#14)
+| '?19: '?48 due to Boring at Single(bb23[6]) (examples/buffer_overflow_test.rs:17:23: 17:46 (#14)
+| '?19: '?50 due to CallArgument(Some(FnDef(DefId(2:9413 ~ core[0ea9]::iter::traits::iterator::Iterator::next), [std::iter::Enumerate<std::slice::Iter<'{erased}, i32>>]))) at Single(bb23[6]) (examples/buffer_overflow_test.rs:17:23: 17:46 (#14)
+| '?19: '?83 due to BoringNoLocation at Single(bb23[6]) (examples/buffer_overflow_test.rs:17:23: 17:46 (#14)
+| '?19: '?83 due to BoringNoLocation at Single(bb23[6]) (examples/buffer_overflow_test.rs:17:23: 17:46 (#14)
+| '?21: '?22 due to Boring at Single(bb27[3]) (examples/buffer_overflow_test.rs:17:14: 17:18 (#0)
+| '?23: '?54 due to Boring at Single(bb27[8]) (examples/buffer_overflow_test.rs:18:9: 18:21 (#0)
+| '?24: '?55 due to Boring at Single(bb28[10]) (examples/buffer_overflow_test.rs:22:23: 22:35 (#0)
+| '?25: '?6 due to Boring at Single(bb31[9]) (examples/buffer_overflow_test.rs:25:18: 25:29 (#0)
+| '?25: '?70 due to Boring at Single(bb31[9]) (examples/buffer_overflow_test.rs:25:18: 25:29 (#0)
+| '?26: '?7 due to Boring at Single(bb31[9]) (examples/buffer_overflow_test.rs:25:18: 25:29 (#0)
+| '?26: '?71 due to Boring at Single(bb31[9]) (examples/buffer_overflow_test.rs:25:18: 25:29 (#0)
+| '?27: '?59 due to Boring at Single(bb31[10]) (examples/buffer_overflow_test.rs:25:18: 25:29 (#0)
+| '?28: '?57 due to Boring at Single(bb31[11]) (examples/buffer_overflow_test.rs:25:18: 25:29 (#0)
+| '?29: '?69 due to Boring at Single(bb31[18]) (examples/buffer_overflow_test.rs:25:31: 25:34 (#8)
+| '?30: '?68 due to Boring at Single(bb31[19]) (examples/buffer_overflow_test.rs:25:31: 25:34 (#8)
+| '?31: '?73 due to TypeAnnotation(GenericArg) at Single(bb31[20]) (examples/buffer_overflow_test.rs:25:26: 25:28 (#8)
+| '?32: '?66 due to Boring at Single(bb32[1]) (C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\std\src\macros.rs:143:28: 143:61 (#8)
+| '?33: '?64 due to Boring at Single(bb32[3]) (C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\std\src\macros.rs:143:28: 143:61 (#8)
+| '?34: '?62 due to Boring at Single(bb32[4]) (C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\std\src\macros.rs:143:28: 143:61 (#8)
+| '?35: '?56 due to Boring at Single(bb32[5]) (C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\std\src\macros.rs:143:28: 143:61 (#8)
+| '?35: '?72 due to TypeAnnotation(GenericArg) at Single(bb32[5]) (C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\std\src\macros.rs:143:28: 143:61 (#8)
+| '?36: '?78 due to CallArgument(Some(FnDef(DefId(2:9413 ~ core[0ea9]::iter::traits::iterator::Iterator::next), [std::ops::Range<usize>]))) at Single(bb4[6]) (examples/buffer_overflow_test.rs:4:14: 4:19 (#11)
+| '?37: '?10 due to Boring at Single(bb4[5]) (examples/buffer_overflow_test.rs:4:14: 4:19 (#11)
+| '?39: '?79 due to Boring at Single(bb8[9]) (examples/buffer_overflow_test.rs:5:15: 5:18 (#0)
+| '?40: '?80 due to CallArgument(Some(FnDef(DefId(3:8063 ~ alloc[3a62]::vec::{impl#1}::as_mut_ptr), [u8, std::alloc::Global]))) at Single(bb9[10]) (examples/buffer_overflow_test.rs:9:15: 9:34 (#0)
+| '?41: '?47 due to Assignment at Single(bb21[3]) (examples/buffer_overflow_test.rs:17:23: 17:46 (#14)
+| '?42: '?16 due to CallArgument(Some(FnDef(DefId(2:9281 ~ core[0ea9]::iter::traits::collect::IntoIterator::into_iter), [std::iter::Enumerate<std::slice::Iter<'{erased}, i32>>]))) at Single(bb20[1]) (examples/buffer_overflow_test.rs:17:23: 17:46 (#14)
+| '?43: '?15 due to CallArgument(Some(FnDef(DefId(2:9448 ~ core[0ea9]::iter::traits::iterator::Iterator::enumerate), [std::slice::Iter<'{erased}, i32>]))) at Single(bb19[1]) (examples/buffer_overflow_test.rs:17:23: 17:46 (#0)
+| '?44: '?82 due to CallArgument(Some(FnDef(DefId(2:13997 ~ core[0ea9]::slice::{impl#0}::iter), [i32]))) at Single(bb18[2]) (examples/buffer_overflow_test.rs:17:23: 17:34 (#0)
+| '?45: '?14 due to Boring at Single(bb18[0]) (examples/buffer_overflow_test.rs:17:23: 17:27 (#0)
+| '?46: '?81 due to Boring at Single(bb17[9]) (examples/buffer_overflow_test.rs:17:23: 17:34 (#0)
+| '?47: '?52 due to Boring at Single(bb23[4]) (examples/buffer_overflow_test.rs:17:23: 17:46 (#14)
+| '?48: '?20 due to Boring at Single(bb27[1]) (examples/buffer_overflow_test.rs:17:10: 17:11 (#0)
+| '?48: '?21 due to Boring at Single(bb27[3]) (examples/buffer_overflow_test.rs:17:14: 17:18 (#0)
+| '?49: '?83 due to CallArgument(Some(FnDef(DefId(2:9413 ~ core[0ea9]::iter::traits::iterator::Iterator::next), [std::iter::Enumerate<std::slice::Iter<'{erased}, i32>>]))) at Single(bb23[6]) (examples/buffer_overflow_test.rs:17:23: 17:46 (#14)
+| '?50: '?19 due to CallArgument(Some(FnDef(DefId(2:9413 ~ core[0ea9]::iter::traits::iterator::Iterator::next), [std::iter::Enumerate<std::slice::Iter<'{erased}, i32>>]))) at Single(bb23[6]) (examples/buffer_overflow_test.rs:17:23: 17:46 (#14)
+| '?50: '?52 due to Boring at Single(bb23[5]) (examples/buffer_overflow_test.rs:17:23: 17:46 (#14)
+| '?51: '?18 due to Boring at Single(bb23[5]) (examples/buffer_overflow_test.rs:17:23: 17:46 (#14)
+| '?52: '?47 due to Boring at Single(bb23[4]) (examples/buffer_overflow_test.rs:17:23: 17:46 (#14)
+| '?52: '?50 due to Boring at Single(bb23[5]) (examples/buffer_overflow_test.rs:17:23: 17:46 (#14)
+| '?54: '?84 due to Boring at Single(bb27[11]) (examples/buffer_overflow_test.rs:18:21: 18:24 (#0)
+| '?55: '?85 due to CallArgument(Some(FnDef(DefId(3:8063 ~ alloc[3a62]::vec::{impl#1}::as_mut_ptr), [i32, std::alloc::Global]))) at Single(bb28[11]) (examples/buffer_overflow_test.rs:22:23: 22:48 (#0)
+| '?56: '?87 due to CallArgument(Some(FnDef(DefId(1:3771 ~ std[56cf]::io::stdio::_print), []))) at Single(bb33[2]) (C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\std\src\macros.rs:143:9: 143:62 (#7)
+| '?57: '?35 due to CallArgument(Some(FnDef(DefId(2:11701 ~ core[0ea9]::fmt::rt::{impl#2}::new_v1), ['{erased}, 2_usize, 1_usize]))) at Single(bb32[5]) (C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\std\src\macros.rs:143:28: 143:61 (#8)
+| '?58: '?0 due to CallArgument(Some(FnDef(DefId(2:11701 ~ core[0ea9]::fmt::rt::{impl#2}::new_v1), ['{erased}, 2_usize, 1_usize]))) at Single(bb32[5]) (C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\std\src\macros.rs:143:28: 143:61 (#8)
+| '?59: '?28 due to Boring at Single(bb31[11]) (examples/buffer_overflow_test.rs:25:18: 25:29 (#0)
+| '?60: '?58 due to Boring at Single(bb31[11]) (examples/buffer_overflow_test.rs:25:18: 25:29 (#0)
+| '?62: '?35 due to CallArgument(Some(FnDef(DefId(2:11701 ~ core[0ea9]::fmt::rt::{impl#2}::new_v1), ['{erased}, 2_usize, 1_usize]))) at Single(bb32[5]) (C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\std\src\macros.rs:143:28: 143:61 (#8)
+| '?63: '?35 due to CallArgument(Some(FnDef(DefId(2:11701 ~ core[0ea9]::fmt::rt::{impl#2}::new_v1), ['{erased}, 2_usize, 1_usize]))) at Single(bb32[5]) (C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\std\src\macros.rs:143:28: 143:61 (#8)
+| '?64: '?34 due to Boring at Single(bb32[4]) (C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\std\src\macros.rs:143:28: 143:61 (#8)
+| '?65: '?63 due to Boring at Single(bb32[4]) (C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\std\src\macros.rs:143:28: 143:61 (#8)
+| '?66: '?65 due to Boring at Single(bb32[3]) (C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\std\src\macros.rs:143:28: 143:61 (#8)
+| '?67: '?32 due to Boring at Single(bb32[1]) (C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\std\src\macros.rs:143:28: 143:61 (#8)
+| '?68: '?86 due to CallArgument(Some(FnDef(DefId(2:11666 ~ core[0ea9]::fmt::rt::{impl#0}::new_display), ['{erased}, i32]))) at Single(bb31[20]) (examples/buffer_overflow_test.rs:25:26: 25:28 (#8)
+| '?69: '?30 due to Boring at Single(bb31[19]) (examples/buffer_overflow_test.rs:25:31: 25:34 (#8)
+| '?70: '?27 due to Boring at Single(bb31[10]) (examples/buffer_overflow_test.rs:25:18: 25:29 (#0)
+| '?71: '?60 due to Boring at Single(bb31[10]) (examples/buffer_overflow_test.rs:25:18: 25:29 (#0)
+| '?72: '?35 due to TypeAnnotation(GenericArg) at Single(bb32[5]) (C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\std\src\macros.rs:143:28: 143:61 (#8)
+| '?72: '?75 due to BoringNoLocation at All(C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\std\src\macros.rs:143:28: 143:61) (C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\std\src\macros.rs:143:28: 143:61 (#8)
+| '?73: '?31 due to TypeAnnotation(GenericArg) at Single(bb31[20]) (examples/buffer_overflow_test.rs:25:26: 25:28 (#8)
+| '?73: '?77 due to BoringNoLocation at All(examples/buffer_overflow_test.rs:25:26: 25:28) (examples/buffer_overflow_test.rs:25:26: 25:28 (#8)
+| '?74: '?75 due to BoringNoLocation at All(C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\std\src\macros.rs:143:28: 143:61) (C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\std\src\macros.rs:143:28: 143:61 (#8)
+| '?75: '?72 due to BoringNoLocation at All(C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\std\src\macros.rs:143:28: 143:61) (C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\std\src\macros.rs:143:28: 143:61 (#8)
+| '?75: '?74 due to BoringNoLocation at All(C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\std\src\macros.rs:143:28: 143:61) (C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\std\src\macros.rs:143:28: 143:61 (#8)
+| '?76: '?77 due to BoringNoLocation at All(examples/buffer_overflow_test.rs:25:26: 25:28) (examples/buffer_overflow_test.rs:25:26: 25:28 (#8)
+| '?77: '?73 due to BoringNoLocation at All(examples/buffer_overflow_test.rs:25:26: 25:28) (examples/buffer_overflow_test.rs:25:26: 25:28 (#8)
+| '?77: '?76 due to BoringNoLocation at All(examples/buffer_overflow_test.rs:25:26: 25:28) (examples/buffer_overflow_test.rs:25:26: 25:28 (#8)
+| '?79: '?38 due to Boring at Single(bb8[9]) (examples/buffer_overflow_test.rs:5:15: 5:18 (#0)
+| '?81: '?45 due to Boring at Single(bb17[9]) (examples/buffer_overflow_test.rs:17:23: 17:34 (#0)
+| '?82: '?43 due to Boring at Single(bb18[2]) (examples/buffer_overflow_test.rs:17:23: 17:34 (#0)
+| '?84: '?53 due to Boring at Single(bb27[11]) (examples/buffer_overflow_test.rs:18:21: 18:24 (#0)
+| '?86: '?67 due to Boring at Single(bb31[20]) (examples/buffer_overflow_test.rs:25:26: 25:28 (#8)
+|
+| Borrows
+| bw0: issued at bb4[4] in '?9
+| bw1: issued at bb4[5] in '?10
+| bw2: issued at bb8[6] in '?11
+| bw3: issued at bb9[9] in '?12
+| bw4: issued at bb17[8] in '?13
+| bw5: issued at bb23[4] in '?17
+| bw6: issued at bb23[5] in '?18
+| bw7: issued at bb27[8] in '?23
+| bw8: issued at bb28[10] in '?24
+| bw9: issued at bb31[18] in '?29
+| bw10: issued at bb32[3] in '?33
+|
+| User Type Annotations
+| 0: user_ty: Canonical { value: TypeOf(DefId(3:6158 ~ alloc[3a62]::slice::{impl#0}::into_vec), UserArgs { args: [^0, ^1], user_self_ty: Some(UserSelfTy { impl_def_id: DefId(3:6118 ~ alloc[3a62]::slice::{impl#0}), self_ty: [^2] }) }), max_universe: U0, variables: [CanonicalVarInfo { kind: Ty(General(U0)) }, CanonicalVarInfo { kind: Ty(General(U0)) }, CanonicalVarInfo { kind: Ty(General(U0)) }] }, span: C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\alloc\src\macros.rs:50:9: 50:24, inferred_ty: fn(std::boxed::Box<[i32]>) -> std::vec::Vec<i32> {std::slice::<impl [i32]>::into_vec::<std::alloc::Global>}
+| 1: user_ty: Canonical { value: TypeOf(DefId(2:11701 ~ core[0ea9]::fmt::rt::{impl#2}::new_v1), UserArgs { args: ['^0, ^1, ^2], user_self_ty: Some(UserSelfTy { impl_def_id: DefId(2:11695 ~ core[0ea9]::fmt::rt::{impl#2}), self_ty: std::fmt::Arguments<'^3> }) }), max_universe: U0, variables: [CanonicalVarInfo { kind: Region(U0) }, CanonicalVarInfo { kind: Const(U0) }, CanonicalVarInfo { kind: Const(U0) }, CanonicalVarInfo { kind: Region(U0) }] }, span: C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\std\src\macros.rs:143:28: 143:61, inferred_ty: fn(&[&'static str; 2], &[core::fmt::rt::Argument<'_>; 1]) -> std::fmt::Arguments<'_> {core::fmt::rt::<impl std::fmt::Arguments<'_>>::new_v1::<2, 1>}
+| 2: user_ty: Canonical { value: TypeOf(DefId(2:11666 ~ core[0ea9]::fmt::rt::{impl#0}::new_display), UserArgs { args: ['^0, ^1], user_self_ty: Some(UserSelfTy { impl_def_id: DefId(2:11665 ~ core[0ea9]::fmt::rt::{impl#0}), self_ty: core::fmt::rt::Argument<'^2> }) }), max_universe: U0, variables: [CanonicalVarInfo { kind: Region(U0) }, CanonicalVarInfo { kind: Ty(General(U0)) }, CanonicalVarInfo { kind: Region(U0) }] }, span: examples/buffer_overflow_test.rs:25:26: 25:28, inferred_ty: for<'a> fn(&'a i32) -> core::fmt::rt::Argument<'a> {core::fmt::rt::Argument::<'_>::new_display::<i32>}
+|
+fn test_buffer_overflow() -> () {
+    let mut _0: ();                      // return place in scope 0 at examples/buffer_overflow_test.rs:1:26: 1:26
+    let mut _1: std::vec::Vec<u8>;       // in scope 0 at examples/buffer_overflow_test.rs:3:9: 3:19
+    let _2: ();                          // in scope 0 at examples/buffer_overflow_test.rs:4:5: 6:6
+    let mut _3: std::ops::Range<usize>;  // in scope 0 at examples/buffer_overflow_test.rs:4:14: 4:19
+    let mut _4: std::ops::Range<usize>;  // in scope 0 at examples/buffer_overflow_test.rs:4:14: 4:19
+    let mut _6: ();                      // in scope 0 at examples/buffer_overflow_test.rs:1:1: 27:2
+    let _7: ();                          // in scope 0 at examples/buffer_overflow_test.rs:4:14: 4:19
+    let mut _8: std::option::Option<usize>; // in scope 0 at examples/buffer_overflow_test.rs:4:14: 4:19
+    let mut _9: &mut std::ops::Range<usize>; // in scope 0 at examples/buffer_overflow_test.rs:4:14: 4:19
+    let mut _10: &mut std::ops::Range<usize>; // in scope 0 at examples/buffer_overflow_test.rs:4:14: 4:19
+    let mut _11: isize;                  // in scope 0 at examples/buffer_overflow_test.rs:4:5: 6:6
+    let mut _12: !;                      // in scope 0 at examples/buffer_overflow_test.rs:4:5: 6:6
+    let mut _14: usize;                  // in scope 0 at examples/buffer_overflow_test.rs:5:21: 5:22
+    let mut _15: &mut u8;                // in scope 0 at examples/buffer_overflow_test.rs:5:15: 5:18
+    let mut _16: &mut std::vec::Vec<u8>; // in scope 0 at examples/buffer_overflow_test.rs:5:9: 5:15
+    let mut _17: usize;                  // in scope 0 at examples/buffer_overflow_test.rs:5:16: 5:17
+    let mut _19: &mut std::vec::Vec<u8>; // in scope 0 at examples/buffer_overflow_test.rs:9:15: 9:21
+    let _20: ();                         // in scope 0 at examples/buffer_overflow_test.rs:10:5: 12:6
+    let mut _21: *mut u8;                // in scope 0 at examples/buffer_overflow_test.rs:11:10: 11:20
+    let mut _22: *mut u8;                // in scope 0 at examples/buffer_overflow_test.rs:11:10: 11:13
+    let mut _24: std::boxed::Box<[i32]>; // in scope 0 at C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\alloc\src\macros.rs:53:13: 53:46
+    let mut _25: std::boxed::Box<[i32; 8]>; // in scope 0 at C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\alloc\src\macros.rs:53:13: 53:46
+    let mut _26: usize;                  // in scope 0 at C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\alloc\src\macros.rs:53:13: 53:46
+    let mut _27: usize;                  // in scope 0 at C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\alloc\src\macros.rs:53:13: 53:46
+    let mut _28: *mut u8;                // in scope 0 at C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\alloc\src\macros.rs:53:13: 53:46
+    let mut _29: std::boxed::Box<[i32; 8]>; // in scope 0 at C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\alloc\src\macros.rs:53:13: 53:46
+    let _31: ();                         // in scope 0 at examples/buffer_overflow_test.rs:17:5: 19:6
+    let mut _32: std::iter::Enumerate<std::slice::Iter<'_, i32>>; // in scope 0 at examples/buffer_overflow_test.rs:17:23: 17:46
+    let mut _33: std::iter::Enumerate<std::slice::Iter<'_, i32>>; // in scope 0 at examples/buffer_overflow_test.rs:17:23: 17:46
+    let mut _34: std::slice::Iter<'_, i32>; // in scope 0 at examples/buffer_overflow_test.rs:17:23: 17:34
+    let mut _35: &[i32];                 // in scope 0 at examples/buffer_overflow_test.rs:17:23: 17:27
+    let _36: &[i32];                     // in scope 0 at examples/buffer_overflow_test.rs:17:23: 17:34
+    let mut _37: &std::vec::Vec<i32>;    // in scope 0 at examples/buffer_overflow_test.rs:17:23: 17:27
+    let _39: ();                         // in scope 0 at examples/buffer_overflow_test.rs:17:23: 17:46
+    let mut _40: std::option::Option<(usize, &i32)>; // in scope 0 at examples/buffer_overflow_test.rs:17:23: 17:46
+    let mut _41: &mut std::iter::Enumerate<std::slice::Iter<'_, i32>>; // in scope 0 at examples/buffer_overflow_test.rs:17:23: 17:46
+    let mut _42: &mut std::iter::Enumerate<std::slice::Iter<'_, i32>>; // in scope 0 at examples/buffer_overflow_test.rs:17:23: 17:46
+    let mut _43: isize;                  // in scope 0 at examples/buffer_overflow_test.rs:17:5: 19:6
+    let mut _44: !;                      // in scope 0 at examples/buffer_overflow_test.rs:17:5: 19:6
+    let mut _47: i32;                    // in scope 0 at examples/buffer_overflow_test.rs:18:27: 18:31
+    let mut _48: &mut i32;               // in scope 0 at examples/buffer_overflow_test.rs:18:21: 18:24
+    let mut _49: &mut std::vec::Vec<i32>; // in scope 0 at examples/buffer_overflow_test.rs:18:9: 18:21
+    let mut _50: usize;                  // in scope 0 at examples/buffer_overflow_test.rs:18:22: 18:23
+    let mut _52: &mut std::vec::Vec<i32>; // in scope 0 at examples/buffer_overflow_test.rs:22:23: 22:35
+    let mut _54: *mut i32;               // in scope 0 at examples/buffer_overflow_test.rs:24:20: 24:41
+    let mut _55: *mut i32;               // in scope 0 at examples/buffer_overflow_test.rs:24:20: 24:31
+    let _56: ();                         // in scope 0 at C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\std\src\macros.rs:142:23: 144:6
+    let _57: ();                         // in scope 0 at C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\std\src\macros.rs:143:9: 143:62
+    let mut _58: std::fmt::Arguments<'_>; // in scope 0 at C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\std\src\macros.rs:143:28: 143:61
+    let mut _59: &[&str; 2];             // in scope 0 at examples/buffer_overflow_test.rs:25:18: 25:29
+    let _60: &[&str; 2];                 // in scope 0 at examples/buffer_overflow_test.rs:25:18: 25:29
+    let _61: [&str; 2];                  // in scope 0 at examples/buffer_overflow_test.rs:25:18: 25:29
+    let mut _62: &[core::fmt::rt::Argument<'_>; 1]; // in scope 0 at C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\std\src\macros.rs:143:28: 143:61
+    let _63: &[core::fmt::rt::Argument<'_>; 1]; // in scope 0 at C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\std\src\macros.rs:143:28: 143:61
+    let _64: [core::fmt::rt::Argument<'_>; 1]; // in scope 0 at C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\std\src\macros.rs:143:28: 143:61
+    let mut _65: core::fmt::rt::Argument<'_>; // in scope 0 at examples/buffer_overflow_test.rs:25:26: 25:28
+    let mut _66: &i32;                   // in scope 0 at examples/buffer_overflow_test.rs:25:31: 25:34
+    let _67: &i32;                       // in scope 0 at examples/buffer_overflow_test.rs:25:31: 25:34
+    scope 1 {
+        debug buffer => _1;              // in scope 1 at examples/buffer_overflow_test.rs:3:9: 3:19
+        let mut _5: std::ops::Range<usize>; // in scope 1 at examples/buffer_overflow_test.rs:4:14: 4:19
+        let _18: *mut u8;                // in scope 1 at examples/buffer_overflow_test.rs:9:9: 9:12
+        scope 2 {
+            debug iter => _5;            // in scope 2 at examples/buffer_overflow_test.rs:4:14: 4:19
+            let _13: usize;              // in scope 2 at examples/buffer_overflow_test.rs:4:9: 4:10
+            scope 3 {
+                debug i => _13;          // in scope 3 at examples/buffer_overflow_test.rs:4:9: 4:10
+            }
+        }
+        scope 4 {
+            debug ptr => _18;            // in scope 4 at examples/buffer_overflow_test.rs:9:9: 9:12
+            let _23: std::vec::Vec<i32>; // in scope 4 at examples/buffer_overflow_test.rs:15:9: 15:13
+            scope 5 {
+                debug data => _23;       // in scope 5 at examples/buffer_overflow_test.rs:15:9: 15:13
+                let mut _30: std::vec::Vec<i32>; // in scope 5 at examples/buffer_overflow_test.rs:16:9: 16:25
+                scope 6 {
+                    debug small_buffer => _30; // in scope 6 at examples/buffer_overflow_test.rs:16:9: 16:25
+                    let mut _38: std::iter::Enumerate<std::slice::Iter<'_, i32>>; // in scope 6 at examples/buffer_overflow_test.rs:17:23: 17:46
+                    let _51: *mut i32;   // in scope 6 at examples/buffer_overflow_test.rs:22:9: 22:20
+                    scope 7 {
+                        debug iter => _38; // in scope 7 at examples/buffer_overflow_test.rs:17:23: 17:46
+                        let _45: usize;  // in scope 7 at examples/buffer_overflow_test.rs:17:10: 17:11
+                        let _46: i32;    // in scope 7 at examples/buffer_overflow_test.rs:17:14: 17:18
+                        scope 8 {
+                            debug i => _45; // in scope 8 at examples/buffer_overflow_test.rs:17:10: 17:11
+                            debug item => _46; // in scope 8 at examples/buffer_overflow_test.rs:17:14: 17:18
+                        }
+                    }
+                    scope 9 {
+                        debug another_ptr => _51; // in scope 9 at examples/buffer_overflow_test.rs:22:9: 22:20
+                        let _53: i32;    // in scope 9 at examples/buffer_overflow_test.rs:24:13: 24:16
+                        scope 10 {
+                            debug val => _53; // in scope 10 at examples/buffer_overflow_test.rs:24:13: 24:16
+                            let mut _68: &[&str; 2]; // in scope 10 at examples/buffer_overflow_test.rs:25:18: 25:29
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    bb0: {
+        StorageLive(_1);                 // scope 0 at examples/buffer_overflow_test.rs:3:9: 3:19
+        _1 = from_elem::<u8>(const 0_u8, const 5_usize) -> [return: bb1, unwind: bb43]; // scope 0 at C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\alloc\src\macros.rs:47:9: 47:42
+                                         // mir::ConstOperand
+                                         // + span: C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\alloc\src\macros.rs:47:9: 47:31
+                                         // + const_: Const { ty: fn(u8, usize) -> Vec<u8> {from_elem::<u8>}, val: Value(from_elem::<u8>) }
+    }
+
+    bb1: {
+        FakeRead(ForLet(None), _1);      // scope 0 at examples/buffer_overflow_test.rs:3:9: 3:19
+        StorageLive(_2);                 // scope 1 at examples/buffer_overflow_test.rs:4:5: 6:6
+        StorageLive(_3);                 // scope 1 at examples/buffer_overflow_test.rs:4:14: 4:19
+        StorageLive(_4);                 // scope 1 at examples/buffer_overflow_test.rs:4:14: 4:19
+        _4 = std::ops::Range::<usize> { start: const 0_usize, end: const 10_usize }; // scope 1 at examples/buffer_overflow_test.rs:4:14: 4:19
+        _3 = <std::ops::Range<usize> as IntoIterator>::into_iter(move _4) -> [return: bb2, unwind: bb42]; // scope 1 at examples/buffer_overflow_test.rs:4:14: 4:19
+                                         // mir::ConstOperand
+                                         // + span: examples/buffer_overflow_test.rs:4:14: 4:19
+                                         // + const_: Const { ty: fn(std::ops::Range<usize>) -> <std::ops::Range<usize> as IntoIterator>::IntoIter {<std::ops::Range<usize> as IntoIterator>::into_iter}, val: Value(<std::ops::Range<usize> as IntoIterator>::into_iter) }
+    }
+
+    bb2: {
+        StorageDead(_4);                 // scope 1 at examples/buffer_overflow_test.rs:4:18: 4:19
+        PlaceMention(_3);                // scope 1 at examples/buffer_overflow_test.rs:4:14: 4:19
+        StorageLive(_5);                 // scope 1 at examples/buffer_overflow_test.rs:4:14: 4:19
+        _5 = move _3;                    // scope 1 at examples/buffer_overflow_test.rs:4:14: 4:19
+        goto -> bb3;                     // scope 2 at examples/buffer_overflow_test.rs:4:5: 6:6
+    }
+
+    bb3: {
+        falseUnwind -> [real: bb4, unwind: bb42]; // scope 2 at examples/buffer_overflow_test.rs:4:5: 6:6
+    }
+
+    bb4: {
+        StorageLive(_7);                 // scope 2 at examples/buffer_overflow_test.rs:4:14: 4:19
+        StorageLive(_8);                 // scope 2 at examples/buffer_overflow_test.rs:4:14: 4:19
+        StorageLive(_9);                 // scope 2 at examples/buffer_overflow_test.rs:4:14: 4:19
+        StorageLive(_10);                // scope 2 at examples/buffer_overflow_test.rs:4:14: 4:19
+        _10 = &mut _5;                   // scope 2 at examples/buffer_overflow_test.rs:4:14: 4:19
+        _9 = &mut (*_10);                // scope 2 at examples/buffer_overflow_test.rs:4:14: 4:19
+        _8 = <std::ops::Range<usize> as Iterator>::next(move _9) -> [return: bb5, unwind: bb42]; // scope 2 at examples/buffer_overflow_test.rs:4:14: 4:19
+                                         // mir::ConstOperand
+                                         // + span: examples/buffer_overflow_test.rs:4:14: 4:19
+                                         // + const_: Const { ty: for<'a> fn(&'a mut std::ops::Range<usize>) -> Option<<std::ops::Range<usize> as Iterator>::Item> {<std::ops::Range<usize> as Iterator>::next}, val: Value(<std::ops::Range<usize> as Iterator>::next) }
+    }
+
+    bb5: {
+        StorageDead(_9);                 // scope 2 at examples/buffer_overflow_test.rs:4:18: 4:19
+        PlaceMention(_8);                // scope 2 at examples/buffer_overflow_test.rs:4:14: 4:19
+        _11 = discriminant(_8);          // scope 2 at examples/buffer_overflow_test.rs:4:14: 4:19
+        switchInt(move _11) -> [0: bb7, 1: bb8, otherwise: bb6]; // scope 2 at examples/buffer_overflow_test.rs:4:14: 4:19
+    }
+
+    bb6: {
+        FakeRead(ForMatchedPlace(None), _8); // scope 2 at examples/buffer_overflow_test.rs:4:14: 4:19
+        unreachable;                     // scope 2 at examples/buffer_overflow_test.rs:4:14: 4:19
+    }
+
+    bb7: {
+        falseEdge -> [real: bb9, imaginary: bb8]; // scope 2 at examples/buffer_overflow_test.rs:4:5: 6:6
+    }
+
+    bb8: {
+        StorageLive(_13);                // scope 2 at examples/buffer_overflow_test.rs:4:9: 4:10
+        _13 = copy ((_8 as Some).0: usize); // scope 2 at examples/buffer_overflow_test.rs:4:9: 4:10
+        StorageLive(_14);                // scope 3 at examples/buffer_overflow_test.rs:5:21: 5:22
+        _14 = copy _13;                  // scope 3 at examples/buffer_overflow_test.rs:5:21: 5:22
+        StorageLive(_15);                // scope 3 at examples/buffer_overflow_test.rs:5:15: 5:18
+        StorageLive(_16);                // scope 3 at examples/buffer_overflow_test.rs:5:9: 5:15
+        _16 = &mut _1;                   // scope 3 at examples/buffer_overflow_test.rs:5:9: 5:15
+        StorageLive(_17);                // scope 3 at examples/buffer_overflow_test.rs:5:16: 5:17
+        _17 = copy _13;                  // scope 3 at examples/buffer_overflow_test.rs:5:16: 5:17
+        _15 = <Vec<u8> as IndexMut<usize>>::index_mut(move _16, move _17) -> [return: bb10, unwind: bb42]; // scope 3 at examples/buffer_overflow_test.rs:5:15: 5:18
+                                         // mir::ConstOperand
+                                         // + span: examples/buffer_overflow_test.rs:5:15: 5:18
+                                         // + const_: Const { ty: for<'a> fn(&'a mut Vec<u8>, usize) -> &'a mut <Vec<u8> as Index<usize>>::Output {<Vec<u8> as IndexMut<usize>>::index_mut}, val: Value(<Vec<u8> as IndexMut<usize>>::index_mut) }
+    }
+
+    bb9: {
+        _2 = const ();                   // scope 2 at examples/buffer_overflow_test.rs:4:5: 6:6
+        StorageDead(_10);                // scope 2 at examples/buffer_overflow_test.rs:6:5: 6:6
+        StorageDead(_8);                 // scope 2 at examples/buffer_overflow_test.rs:6:5: 6:6
+        StorageDead(_7);                 // scope 2 at examples/buffer_overflow_test.rs:6:5: 6:6
+        StorageDead(_5);                 // scope 1 at examples/buffer_overflow_test.rs:6:5: 6:6
+        StorageDead(_3);                 // scope 1 at examples/buffer_overflow_test.rs:6:5: 6:6
+        StorageDead(_2);                 // scope 1 at examples/buffer_overflow_test.rs:6:5: 6:6
+        StorageLive(_18);                // scope 1 at examples/buffer_overflow_test.rs:9:9: 9:12
+        StorageLive(_19);                // scope 1 at examples/buffer_overflow_test.rs:9:15: 9:21
+        _19 = &mut _1;                   // scope 1 at examples/buffer_overflow_test.rs:9:15: 9:21
+        _18 = Vec::<u8>::as_mut_ptr(move _19) -> [return: bb11, unwind: bb42]; // scope 1 at examples/buffer_overflow_test.rs:9:15: 9:34
+                                         // mir::ConstOperand
+                                         // + span: examples/buffer_overflow_test.rs:9:22: 9:32
+                                         // + const_: Const { ty: for<'a> fn(&'a mut Vec<u8>) -> *mut u8 {Vec::<u8>::as_mut_ptr}, val: Value(Vec::<u8>::as_mut_ptr) }
+    }
+
+    bb10: {
+        StorageDead(_17);                // scope 3 at examples/buffer_overflow_test.rs:5:17: 5:18
+        StorageDead(_16);                // scope 3 at examples/buffer_overflow_test.rs:5:17: 5:18
+        (*_15) = move _14 as u8 (IntToInt); // scope 3 at examples/buffer_overflow_test.rs:5:9: 5:28
+        StorageDead(_14);                // scope 3 at examples/buffer_overflow_test.rs:5:27: 5:28
+        StorageDead(_15);                // scope 3 at examples/buffer_overflow_test.rs:5:28: 5:29
+        _7 = const ();                   // scope 3 at examples/buffer_overflow_test.rs:4:20: 6:6
+        StorageDead(_13);                // scope 2 at examples/buffer_overflow_test.rs:6:5: 6:6
+        StorageDead(_10);                // scope 2 at examples/buffer_overflow_test.rs:6:5: 6:6
+        StorageDead(_8);                 // scope 2 at examples/buffer_overflow_test.rs:6:5: 6:6
+        StorageDead(_7);                 // scope 2 at examples/buffer_overflow_test.rs:6:5: 6:6
+        _6 = const ();                   // scope 2 at examples/buffer_overflow_test.rs:4:5: 6:6
+        goto -> bb3;                     // scope 2 at examples/buffer_overflow_test.rs:4:5: 6:6
+    }
+
+    bb11: {
+        StorageDead(_19);                // scope 1 at examples/buffer_overflow_test.rs:9:33: 9:34
+        FakeRead(ForLet(None), _18);     // scope 1 at examples/buffer_overflow_test.rs:9:9: 9:12
+        StorageLive(_20);                // scope 4 at examples/buffer_overflow_test.rs:10:5: 12:6
+        StorageLive(_21);                // scope 4 at examples/buffer_overflow_test.rs:11:10: 11:20
+        StorageLive(_22);                // scope 4 at examples/buffer_overflow_test.rs:11:10: 11:13
+        _22 = copy _18;                  // scope 4 at examples/buffer_overflow_test.rs:11:10: 11:13
+        _21 = std::ptr::mut_ptr::<impl *mut u8>::add(move _22, const 8_usize) -> [return: bb12, unwind: bb42]; // scope 4 at examples/buffer_overflow_test.rs:11:10: 11:20
+                                         // mir::ConstOperand
+                                         // + span: examples/buffer_overflow_test.rs:11:14: 11:17
+                                         // + const_: Const { ty: unsafe fn(*mut u8, usize) -> *mut u8 {std::ptr::mut_ptr::<impl *mut u8>::add}, val: Value(std::ptr::mut_ptr::<impl *mut u8>::add) }
+    }
+
+    bb12: {
+        StorageDead(_22);                // scope 4 at examples/buffer_overflow_test.rs:11:19: 11:20
+        (*_21) = const 42_u8;            // scope 4 at examples/buffer_overflow_test.rs:11:9: 11:25
+        StorageDead(_21);                // scope 4 at examples/buffer_overflow_test.rs:11:25: 11:26
+        _20 = const ();                  // scope 4 at examples/buffer_overflow_test.rs:10:5: 12:6
+        StorageDead(_20);                // scope 4 at examples/buffer_overflow_test.rs:12:5: 12:6
+        StorageLive(_23);                // scope 4 at examples/buffer_overflow_test.rs:15:9: 15:13
+        StorageLive(_24);                // scope 4 at C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\alloc\src\macros.rs:53:13: 53:46
+        StorageLive(_25);                // scope 4 at C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\alloc\src\macros.rs:53:13: 53:46
+        _26 = SizeOf([i32; 8]);          // scope 4 at C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\alloc\src\macros.rs:53:13: 53:46
+        _27 = AlignOf([i32; 8]);         // scope 4 at C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\alloc\src\macros.rs:53:13: 53:46
+        _28 = alloc::alloc::exchange_malloc(move _26, move _27) -> [return: bb13, unwind: bb42]; // scope 4 at C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\alloc\src\macros.rs:53:13: 53:46
+                                         // mir::ConstOperand
+                                         // + span: C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\alloc\src\macros.rs:53:13: 53:46
+                                         // + const_: Const { ty: unsafe fn(usize, usize) -> *mut u8 {alloc::alloc::exchange_malloc}, val: Value(alloc::alloc::exchange_malloc) }
+    }
+
+    bb13: {
+        StorageLive(_29);                // scope 4 at C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\alloc\src\macros.rs:53:13: 53:46
+        _29 = ShallowInitBox(move _28, [i32; 8]); // scope 4 at C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\alloc\src\macros.rs:53:13: 53:46
+        (*_29) = [const 1_i32, const 2_i32, const 3_i32, const 4_i32, const 5_i32, const 6_i32, const 7_i32, const 8_i32]; // scope 4 at C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\alloc\src\macros.rs:53:36: 53:45
+        _25 = move _29;                  // scope 4 at C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\alloc\src\macros.rs:53:13: 53:46
+        _24 = move _25 as std::boxed::Box<[i32]> (PointerCoercion(Unsize, Implicit)); // scope 4 at C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\alloc\src\macros.rs:53:13: 53:46
+        drop(_25) -> [return: bb14, unwind: bb40]; // scope 4 at C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\alloc\src\macros.rs:53:45: 53:46
+    }
+
+    bb14: {
+        drop(_29) -> [return: bb15, unwind: bb41]; // scope 4 at C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\alloc\src\macros.rs:53:45: 53:46
+    }
+
+    bb15: {
+        StorageDead(_29);                // scope 4 at C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\alloc\src\macros.rs:53:45: 53:46
+        StorageDead(_25);                // scope 4 at C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\alloc\src\macros.rs:53:45: 53:46
+        _23 = slice::<impl [i32]>::into_vec::<std::alloc::Global>(move _24) -> [return: bb16, unwind: bb41]; // scope 4 at C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\alloc\src\macros.rs:50:9: 54:10
+                                         // mir::ConstOperand
+                                         // + span: C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\alloc\src\macros.rs:50:9: 50:24
+                                         // + user_ty: UserType(0)
+                                         // + const_: Const { ty: fn(Box<[i32]>) -> Vec<i32> {slice::<impl [i32]>::into_vec::<std::alloc::Global>}, val: Value(slice::<impl [i32]>::into_vec::<std::alloc::Global>) }
+    }
+
+    bb16: {
+        StorageDead(_24);                // scope 4 at C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\alloc\src\macros.rs:54:9: 54:10
+        FakeRead(ForLet(None), _23);     // scope 4 at examples/buffer_overflow_test.rs:15:9: 15:13
+        StorageLive(_30);                // scope 5 at examples/buffer_overflow_test.rs:16:9: 16:25
+        _30 = from_elem::<i32>(const 0_i32, const 3_usize) -> [return: bb17, unwind: bb39]; // scope 5 at C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\alloc\src\macros.rs:47:9: 47:42
+                                         // mir::ConstOperand
+                                         // + span: C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\alloc\src\macros.rs:47:9: 47:31
+                                         // + const_: Const { ty: fn(i32, usize) -> Vec<i32> {from_elem::<i32>}, val: Value(from_elem::<i32>) }
+    }
+
+    bb17: {
+        FakeRead(ForLet(None), _30);     // scope 5 at examples/buffer_overflow_test.rs:16:9: 16:25
+        StorageLive(_31);                // scope 6 at examples/buffer_overflow_test.rs:17:5: 19:6
+        StorageLive(_32);                // scope 6 at examples/buffer_overflow_test.rs:17:23: 17:46
+        StorageLive(_33);                // scope 6 at examples/buffer_overflow_test.rs:17:23: 17:46
+        StorageLive(_34);                // scope 6 at examples/buffer_overflow_test.rs:17:23: 17:34
+        StorageLive(_35);                // scope 6 at examples/buffer_overflow_test.rs:17:23: 17:27
+        StorageLive(_36);                // scope 6 at examples/buffer_overflow_test.rs:17:23: 17:34
+        StorageLive(_37);                // scope 6 at examples/buffer_overflow_test.rs:17:23: 17:27
+        _37 = &_23;                      // scope 6 at examples/buffer_overflow_test.rs:17:23: 17:27
+        _36 = <Vec<i32> as Deref>::deref(move _37) -> [return: bb18, unwind: bb38]; // scope 6 at examples/buffer_overflow_test.rs:17:23: 17:34
+                                         // mir::ConstOperand
+                                         // + span: examples/buffer_overflow_test.rs:17:23: 17:34
+                                         // + const_: Const { ty: for<'a> fn(&'a Vec<i32>) -> &'a <Vec<i32> as Deref>::Target {<Vec<i32> as Deref>::deref}, val: Value(<Vec<i32> as Deref>::deref) }
+    }
+
+    bb18: {
+        _35 = &(*_36);                   // scope 6 at examples/buffer_overflow_test.rs:17:23: 17:27
+        StorageDead(_37);                // scope 6 at examples/buffer_overflow_test.rs:17:26: 17:27
+        _34 = core::slice::<impl [i32]>::iter(move _35) -> [return: bb19, unwind: bb38]; // scope 6 at examples/buffer_overflow_test.rs:17:23: 17:34
+                                         // mir::ConstOperand
+                                         // + span: examples/buffer_overflow_test.rs:17:28: 17:32
+                                         // + const_: Const { ty: for<'a> fn(&'a [i32]) -> std::slice::Iter<'a, i32> {core::slice::<impl [i32]>::iter}, val: Value(core::slice::<impl [i32]>::iter) }
+    }
+
+    bb19: {
+        StorageDead(_35);                // scope 6 at examples/buffer_overflow_test.rs:17:33: 17:34
+        _33 = <std::slice::Iter<'_, i32> as Iterator>::enumerate(move _34) -> [return: bb20, unwind: bb38]; // scope 6 at examples/buffer_overflow_test.rs:17:23: 17:46
+                                         // mir::ConstOperand
+                                         // + span: examples/buffer_overflow_test.rs:17:35: 17:44
+                                         // + const_: Const { ty: fn(std::slice::Iter<'_, i32>) -> Enumerate<std::slice::Iter<'_, i32>> {<std::slice::Iter<'_, i32> as Iterator>::enumerate}, val: Value(<std::slice::Iter<'_, i32> as Iterator>::enumerate) }
+    }
+
+    bb20: {
+        StorageDead(_34);                // scope 6 at examples/buffer_overflow_test.rs:17:45: 17:46
+        _32 = <Enumerate<std::slice::Iter<'_, i32>> as IntoIterator>::into_iter(move _33) -> [return: bb21, unwind: bb38]; // scope 6 at examples/buffer_overflow_test.rs:17:23: 17:46
+                                         // mir::ConstOperand
+                                         // + span: examples/buffer_overflow_test.rs:17:23: 17:46
+                                         // + const_: Const { ty: fn(Enumerate<std::slice::Iter<'_, i32>>) -> <Enumerate<std::slice::Iter<'_, i32>> as IntoIterator>::IntoIter {<Enumerate<std::slice::Iter<'_, i32>> as IntoIterator>::into_iter}, val: Value(<Enumerate<std::slice::Iter<'_, i32>> as IntoIterator>::into_iter) }
+    }
+
+    bb21: {
+        StorageDead(_33);                // scope 6 at examples/buffer_overflow_test.rs:17:45: 17:46
+        PlaceMention(_32);               // scope 6 at examples/buffer_overflow_test.rs:17:23: 17:46
+        StorageLive(_38);                // scope 6 at examples/buffer_overflow_test.rs:17:23: 17:46
+        _38 = move _32;                  // scope 6 at examples/buffer_overflow_test.rs:17:23: 17:46
+        goto -> bb22;                    // scope 7 at examples/buffer_overflow_test.rs:17:5: 19:6
+    }
+
+    bb22: {
+        falseUnwind -> [real: bb23, unwind: bb38]; // scope 7 at examples/buffer_overflow_test.rs:17:5: 19:6
+    }
+
+    bb23: {
+        StorageLive(_39);                // scope 7 at examples/buffer_overflow_test.rs:17:23: 17:46
+        StorageLive(_40);                // scope 7 at examples/buffer_overflow_test.rs:17:23: 17:46
+        StorageLive(_41);                // scope 7 at examples/buffer_overflow_test.rs:17:23: 17:46
+        StorageLive(_42);                // scope 7 at examples/buffer_overflow_test.rs:17:23: 17:46
+        _42 = &mut _38;                  // scope 7 at examples/buffer_overflow_test.rs:17:23: 17:46
+        _41 = &mut (*_42);               // scope 7 at examples/buffer_overflow_test.rs:17:23: 17:46
+        _40 = <Enumerate<std::slice::Iter<'_, i32>> as Iterator>::next(move _41) -> [return: bb24, unwind: bb38]; // scope 7 at examples/buffer_overflow_test.rs:17:23: 17:46
+                                         // mir::ConstOperand
+                                         // + span: examples/buffer_overflow_test.rs:17:23: 17:46
+                                         // + const_: Const { ty: for<'a> fn(&'a mut Enumerate<std::slice::Iter<'_, i32>>) -> Option<<Enumerate<std::slice::Iter<'_, i32>> as Iterator>::Item> {<Enumerate<std::slice::Iter<'_, i32>> as Iterator>::next}, val: Value(<Enumerate<std::slice::Iter<'_, i32>> as Iterator>::next) }
+    }
+
+    bb24: {
+        StorageDead(_41);                // scope 7 at examples/buffer_overflow_test.rs:17:45: 17:46
+        PlaceMention(_40);               // scope 7 at examples/buffer_overflow_test.rs:17:23: 17:46
+        _43 = discriminant(_40);         // scope 7 at examples/buffer_overflow_test.rs:17:23: 17:46
+        switchInt(move _43) -> [0: bb26, 1: bb27, otherwise: bb25]; // scope 7 at examples/buffer_overflow_test.rs:17:23: 17:46
+    }
+
+    bb25: {
+        FakeRead(ForMatchedPlace(None), _40); // scope 7 at examples/buffer_overflow_test.rs:17:23: 17:46
+        unreachable;                     // scope 7 at examples/buffer_overflow_test.rs:17:23: 17:46
+    }
+
+    bb26: {
+        falseEdge -> [real: bb28, imaginary: bb27]; // scope 7 at examples/buffer_overflow_test.rs:17:5: 19:6
+    }
+
+    bb27: {
+        StorageLive(_45);                // scope 7 at examples/buffer_overflow_test.rs:17:10: 17:11
+        _45 = copy (((_40 as Some).0: (usize, &i32)).0: usize); // scope 7 at examples/buffer_overflow_test.rs:17:10: 17:11
+        StorageLive(_46);                // scope 7 at examples/buffer_overflow_test.rs:17:14: 17:18
+        _46 = copy (*(((_40 as Some).0: (usize, &i32)).1: &i32)); // scope 7 at examples/buffer_overflow_test.rs:17:14: 17:18
+        StorageLive(_47);                // scope 8 at examples/buffer_overflow_test.rs:18:27: 18:31
+        _47 = copy _46;                  // scope 8 at examples/buffer_overflow_test.rs:18:27: 18:31
+        StorageLive(_48);                // scope 8 at examples/buffer_overflow_test.rs:18:21: 18:24
+        StorageLive(_49);                // scope 8 at examples/buffer_overflow_test.rs:18:9: 18:21
+        _49 = &mut _30;                  // scope 8 at examples/buffer_overflow_test.rs:18:9: 18:21
+        StorageLive(_50);                // scope 8 at examples/buffer_overflow_test.rs:18:22: 18:23
+        _50 = copy _45;                  // scope 8 at examples/buffer_overflow_test.rs:18:22: 18:23
+        _48 = <Vec<i32> as IndexMut<usize>>::index_mut(move _49, move _50) -> [return: bb29, unwind: bb38]; // scope 8 at examples/buffer_overflow_test.rs:18:21: 18:24
+                                         // mir::ConstOperand
+                                         // + span: examples/buffer_overflow_test.rs:18:21: 18:24
+                                         // + const_: Const { ty: for<'a> fn(&'a mut Vec<i32>, usize) -> &'a mut <Vec<i32> as Index<usize>>::Output {<Vec<i32> as IndexMut<usize>>::index_mut}, val: Value(<Vec<i32> as IndexMut<usize>>::index_mut) }
+    }
+
+    bb28: {
+        _31 = const ();                  // scope 7 at examples/buffer_overflow_test.rs:17:5: 19:6
+        StorageDead(_42);                // scope 7 at examples/buffer_overflow_test.rs:19:5: 19:6
+        StorageDead(_40);                // scope 7 at examples/buffer_overflow_test.rs:19:5: 19:6
+        StorageDead(_39);                // scope 7 at examples/buffer_overflow_test.rs:19:5: 19:6
+        StorageDead(_38);                // scope 6 at examples/buffer_overflow_test.rs:19:5: 19:6
+        StorageDead(_36);                // scope 6 at examples/buffer_overflow_test.rs:19:5: 19:6
+        StorageDead(_32);                // scope 6 at examples/buffer_overflow_test.rs:19:5: 19:6
+        StorageDead(_31);                // scope 6 at examples/buffer_overflow_test.rs:19:5: 19:6
+        StorageLive(_51);                // scope 6 at examples/buffer_overflow_test.rs:22:9: 22:20
+        StorageLive(_52);                // scope 6 at examples/buffer_overflow_test.rs:22:23: 22:35
+        _52 = &mut _30;                  // scope 6 at examples/buffer_overflow_test.rs:22:23: 22:35
+        _51 = Vec::<i32>::as_mut_ptr(move _52) -> [return: bb30, unwind: bb38]; // scope 6 at examples/buffer_overflow_test.rs:22:23: 22:48
+                                         // mir::ConstOperand
+                                         // + span: examples/buffer_overflow_test.rs:22:36: 22:46
+                                         // + const_: Const { ty: for<'a> fn(&'a mut Vec<i32>) -> *mut i32 {Vec::<i32>::as_mut_ptr}, val: Value(Vec::<i32>::as_mut_ptr) }
+    }
+
+    bb29: {
+        StorageDead(_50);                // scope 8 at examples/buffer_overflow_test.rs:18:23: 18:24
+        StorageDead(_49);                // scope 8 at examples/buffer_overflow_test.rs:18:23: 18:24
+        (*_48) = move _47;               // scope 8 at examples/buffer_overflow_test.rs:18:9: 18:31
+        StorageDead(_47);                // scope 8 at examples/buffer_overflow_test.rs:18:30: 18:31
+        StorageDead(_48);                // scope 8 at examples/buffer_overflow_test.rs:18:31: 18:32
+        _39 = const ();                  // scope 8 at examples/buffer_overflow_test.rs:17:47: 19:6
+        StorageDead(_46);                // scope 7 at examples/buffer_overflow_test.rs:19:5: 19:6
+        StorageDead(_45);                // scope 7 at examples/buffer_overflow_test.rs:19:5: 19:6
+        StorageDead(_42);                // scope 7 at examples/buffer_overflow_test.rs:19:5: 19:6
+        StorageDead(_40);                // scope 7 at examples/buffer_overflow_test.rs:19:5: 19:6
+        StorageDead(_39);                // scope 7 at examples/buffer_overflow_test.rs:19:5: 19:6
+        _6 = const ();                   // scope 7 at examples/buffer_overflow_test.rs:17:5: 19:6
+        goto -> bb22;                    // scope 7 at examples/buffer_overflow_test.rs:17:5: 19:6
+    }
+
+    bb30: {
+        StorageDead(_52);                // scope 6 at examples/buffer_overflow_test.rs:22:47: 22:48
+        FakeRead(ForLet(None), _51);     // scope 6 at examples/buffer_overflow_test.rs:22:9: 22:20
+        StorageLive(_53);                // scope 9 at examples/buffer_overflow_test.rs:24:13: 24:16
+        StorageLive(_54);                // scope 9 at examples/buffer_overflow_test.rs:24:20: 24:41
+        StorageLive(_55);                // scope 9 at examples/buffer_overflow_test.rs:24:20: 24:31
+        _55 = copy _51;                  // scope 9 at examples/buffer_overflow_test.rs:24:20: 24:31
+        _54 = std::ptr::mut_ptr::<impl *mut i32>::offset(move _55, const 5_isize) -> [return: bb31, unwind: bb38]; // scope 9 at examples/buffer_overflow_test.rs:24:20: 24:41
+                                         // mir::ConstOperand
+                                         // + span: examples/buffer_overflow_test.rs:24:32: 24:38
+                                         // + const_: Const { ty: unsafe fn(*mut i32, isize) -> *mut i32 {std::ptr::mut_ptr::<impl *mut i32>::offset}, val: Value(std::ptr::mut_ptr::<impl *mut i32>::offset) }
+    }
+
+    bb31: {
+        StorageDead(_55);                // scope 9 at examples/buffer_overflow_test.rs:24:40: 24:41
+        _53 = copy (*_54);               // scope 9 at examples/buffer_overflow_test.rs:24:19: 24:41
+        FakeRead(ForLet(None), _53);     // scope 9 at examples/buffer_overflow_test.rs:24:13: 24:16
+        StorageDead(_54);                // scope 9 at examples/buffer_overflow_test.rs:24:41: 24:42
+        StorageLive(_56);                // scope 10 at C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\std\src\macros.rs:142:23: 144:6
+        StorageLive(_57);                // scope 10 at C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\std\src\macros.rs:143:9: 143:62
+        StorageLive(_58);                // scope 10 at C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\std\src\macros.rs:143:28: 143:61
+        StorageLive(_59);                // scope 10 at examples/buffer_overflow_test.rs:25:18: 25:29
+        StorageLive(_60);                // scope 10 at examples/buffer_overflow_test.rs:25:18: 25:29
+        _68 = const test_buffer_overflow::promoted[0]; // scope 10 at examples/buffer_overflow_test.rs:25:18: 25:29
+                                         // mir::ConstOperand
+                                         // + span: examples/buffer_overflow_test.rs:25:18: 25:29
+                                         // + const_: Const { ty: &[&str; 2], val: Unevaluated(test_buffer_overflow, [], Some(promoted[0])) }
+        _60 = &(*_68);                   // scope 10 at examples/buffer_overflow_test.rs:25:18: 25:29
+        _59 = &(*_60);                   // scope 10 at examples/buffer_overflow_test.rs:25:18: 25:29
+        StorageLive(_62);                // scope 10 at C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\std\src\macros.rs:143:28: 143:61
+        StorageLive(_63);                // scope 10 at C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\std\src\macros.rs:143:28: 143:61
+        StorageLive(_64);                // scope 10 at C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\std\src\macros.rs:143:28: 143:61
+        StorageLive(_65);                // scope 10 at examples/buffer_overflow_test.rs:25:26: 25:28
+        StorageLive(_66);                // scope 10 at examples/buffer_overflow_test.rs:25:31: 25:34
+        StorageLive(_67);                // scope 10 at examples/buffer_overflow_test.rs:25:31: 25:34
+        _67 = &_53;                      // scope 10 at examples/buffer_overflow_test.rs:25:31: 25:34
+        _66 = &(*_67);                   // scope 10 at examples/buffer_overflow_test.rs:25:31: 25:34
+        _65 = core::fmt::rt::Argument::<'_>::new_display::<i32>(move _66) -> [return: bb32, unwind: bb38]; // scope 10 at examples/buffer_overflow_test.rs:25:26: 25:28
+                                         // mir::ConstOperand
+                                         // + span: examples/buffer_overflow_test.rs:25:26: 25:28
+                                         // + user_ty: UserType(2)
+                                         // + const_: Const { ty: for<'a> fn(&'a i32) -> core::fmt::rt::Argument<'a> {core::fmt::rt::Argument::<'_>::new_display::<i32>}, val: Value(core::fmt::rt::Argument::<'_>::new_display::<i32>) }
+    }
+
+    bb32: {
+        StorageDead(_66);                // scope 10 at examples/buffer_overflow_test.rs:25:27: 25:28
+        _64 = [move _65];                // scope 10 at C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\std\src\macros.rs:143:28: 143:61
+        StorageDead(_65);                // scope 10 at C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\std\src\macros.rs:143:60: 143:61
+        _63 = &_64;                      // scope 10 at C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\std\src\macros.rs:143:28: 143:61
+        _62 = &(*_63);                   // scope 10 at C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\std\src\macros.rs:143:28: 143:61
+        _58 = core::fmt::rt::<impl Arguments<'_>>::new_v1::<2, 1>(move _59, move _62) -> [return: bb33, unwind: bb38]; // scope 10 at C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\std\src\macros.rs:143:28: 143:61
+                                         // mir::ConstOperand
+                                         // + span: C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\std\src\macros.rs:143:28: 143:61
+                                         // + user_ty: UserType(1)
+                                         // + const_: Const { ty: fn(&[&'static str; 2], &[core::fmt::rt::Argument<'_>; 1]) -> Arguments<'_> {core::fmt::rt::<impl Arguments<'_>>::new_v1::<2, 1>}, val: Value(core::fmt::rt::<impl Arguments<'_>>::new_v1::<2, 1>) }
+    }
+
+    bb33: {
+        StorageDead(_62);                // scope 10 at C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\std\src\macros.rs:143:60: 143:61
+        StorageDead(_59);                // scope 10 at C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\std\src\macros.rs:143:60: 143:61
+        _57 = _print(move _58) -> [return: bb34, unwind: bb38]; // scope 10 at C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\std\src\macros.rs:143:9: 143:62
+                                         // mir::ConstOperand
+                                         // + span: C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\std\src\macros.rs:143:9: 143:27
+                                         // + const_: Const { ty: for<'a> fn(Arguments<'a>) {_print}, val: Value(_print) }
+    }
+
+    bb34: {
+        StorageDead(_58);                // scope 10 at C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\std\src\macros.rs:143:61: 143:62
+        StorageDead(_67);                // scope 10 at C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\std\src\macros.rs:143:62: 143:63
+        StorageDead(_64);                // scope 10 at C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\std\src\macros.rs:143:62: 143:63
+        StorageDead(_63);                // scope 10 at C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\std\src\macros.rs:143:62: 143:63
+        StorageDead(_60);                // scope 10 at C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\std\src\macros.rs:143:62: 143:63
+        StorageDead(_57);                // scope 10 at C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\std\src\macros.rs:143:62: 143:63
+        _56 = const ();                  // scope 10 at C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\std\src\macros.rs:142:23: 144:6
+        StorageDead(_56);                // scope 10 at C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\std\src\macros.rs:144:5: 144:6
+        _0 = const ();                   // scope 9 at examples/buffer_overflow_test.rs:23:5: 26:6
+        StorageDead(_53);                // scope 9 at examples/buffer_overflow_test.rs:26:5: 26:6
+        StorageDead(_51);                // scope 6 at examples/buffer_overflow_test.rs:27:1: 27:2
+        drop(_30) -> [return: bb35, unwind: bb39]; // scope 5 at examples/buffer_overflow_test.rs:27:1: 27:2
+    }
+
+    bb35: {
+        StorageDead(_30);                // scope 5 at examples/buffer_overflow_test.rs:27:1: 27:2
+        drop(_23) -> [return: bb36, unwind: bb42]; // scope 4 at examples/buffer_overflow_test.rs:27:1: 27:2
+    }
+
+    bb36: {
+        StorageDead(_23);                // scope 4 at examples/buffer_overflow_test.rs:27:1: 27:2
+        StorageDead(_18);                // scope 1 at examples/buffer_overflow_test.rs:27:1: 27:2
+        drop(_1) -> [return: bb37, unwind: bb43]; // scope 0 at examples/buffer_overflow_test.rs:27:1: 27:2
+    }
+
+    bb37: {
+        StorageDead(_1);                 // scope 0 at examples/buffer_overflow_test.rs:27:1: 27:2
+        return;                          // scope 0 at examples/buffer_overflow_test.rs:27:2: 27:2
+    }
+
+    bb38 (cleanup): {
+        drop(_30) -> [return: bb39, unwind terminate(cleanup)]; // scope 5 at examples/buffer_overflow_test.rs:27:1: 27:2
+    }
+
+    bb39 (cleanup): {
+        drop(_23) -> [return: bb42, unwind terminate(cleanup)]; // scope 4 at examples/buffer_overflow_test.rs:27:1: 27:2
+    }
+
+    bb40 (cleanup): {
+        drop(_29) -> [return: bb41, unwind terminate(cleanup)]; // scope 4 at C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\alloc\src\macros.rs:53:45: 53:46
+    }
+
+    bb41 (cleanup): {
+        drop(_24) -> [return: bb42, unwind terminate(cleanup)]; // scope 4 at C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\alloc\src\macros.rs:54:9: 54:10
+    }
+
+    bb42 (cleanup): {
+        drop(_1) -> [return: bb43, unwind terminate(cleanup)]; // scope 0 at examples/buffer_overflow_test.rs:27:1: 27:2
+    }
+
+    bb43 (cleanup): {
+        resume;                          // scope 0 at examples/buffer_overflow_test.rs:1:1: 27:2
+    }
+}

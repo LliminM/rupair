@@ -1,0 +1,1067 @@
+// MIR for `safe_buffer_operations` before CleanupPostBorrowck
+
+| User Type Annotations
+| 0: user_ty: Canonical { value: TypeOf(DefId(3:6158 ~ alloc[3a62]::slice::{impl#0}::into_vec), UserArgs { args: [^0, ^1], user_self_ty: Some(UserSelfTy { impl_def_id: DefId(3:6118 ~ alloc[3a62]::slice::{impl#0}), self_ty: [^2] }) }), max_universe: U0, variables: [CanonicalVarInfo { kind: Ty(General(U0)) }, CanonicalVarInfo { kind: Ty(General(U0)) }, CanonicalVarInfo { kind: Ty(General(U0)) }] }, span: C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\alloc\src\macros.rs:50:9: 50:24, inferred_ty: fn(std::boxed::Box<[i32]>) -> std::vec::Vec<i32> {std::slice::<impl [i32]>::into_vec::<std::alloc::Global>}
+| 1: user_ty: Canonical { value: TypeOf(DefId(3:8035 ~ alloc[3a62]::vec::{impl#0}::with_capacity), UserArgs { args: [^0], user_self_ty: Some(UserSelfTy { impl_def_id: DefId(3:8032 ~ alloc[3a62]::vec::{impl#0}), self_ty: std::vec::Vec<^1, ^2> }) }), max_universe: U0, variables: [CanonicalVarInfo { kind: Ty(General(U0)) }, CanonicalVarInfo { kind: Ty(General(U0)) }, CanonicalVarInfo { kind: Ty(General(U0)) }] }, span: examples/safe_buffer.rs:7:22: 7:40, inferred_ty: fn(usize) -> std::vec::Vec<i32> {std::vec::Vec::<i32>::with_capacity}
+| 2: user_ty: Canonical { value: TypeOf(DefId(2:11701 ~ core[0ea9]::fmt::rt::{impl#2}::new_v1), UserArgs { args: ['^0, ^1, ^2], user_self_ty: Some(UserSelfTy { impl_def_id: DefId(2:11695 ~ core[0ea9]::fmt::rt::{impl#2}), self_ty: std::fmt::Arguments<'^3> }) }), max_universe: U0, variables: [CanonicalVarInfo { kind: Region(U0) }, CanonicalVarInfo { kind: Const(U0) }, CanonicalVarInfo { kind: Const(U0) }, CanonicalVarInfo { kind: Region(U0) }] }, span: C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\std\src\macros.rs:143:28: 143:61, inferred_ty: fn(&[&'static str; 2], &[core::fmt::rt::Argument<'_>; 1]) -> std::fmt::Arguments<'_> {core::fmt::rt::<impl std::fmt::Arguments<'_>>::new_v1::<2, 1>}
+| 3: user_ty: Canonical { value: TypeOf(DefId(2:11668 ~ core[0ea9]::fmt::rt::{impl#0}::new_debug), UserArgs { args: ['^0, ^1], user_self_ty: Some(UserSelfTy { impl_def_id: DefId(2:11665 ~ core[0ea9]::fmt::rt::{impl#0}), self_ty: core::fmt::rt::Argument<'^2> }) }), max_universe: U0, variables: [CanonicalVarInfo { kind: Region(U0) }, CanonicalVarInfo { kind: Ty(General(U0)) }, CanonicalVarInfo { kind: Region(U0) }] }, span: examples/safe_buffer.rs:11:26: 11:30, inferred_ty: for<'a> fn(&'a std::vec::Vec<i32>) -> core::fmt::rt::Argument<'a> {core::fmt::rt::Argument::<'_>::new_debug::<std::vec::Vec<i32>>}
+| 4: user_ty: Canonical { value: TypeOf(DefId(2:11701 ~ core[0ea9]::fmt::rt::{impl#2}::new_v1), UserArgs { args: ['^0, ^1, ^2], user_self_ty: Some(UserSelfTy { impl_def_id: DefId(2:11695 ~ core[0ea9]::fmt::rt::{impl#2}), self_ty: std::fmt::Arguments<'^3> }) }), max_universe: U0, variables: [CanonicalVarInfo { kind: Region(U0) }, CanonicalVarInfo { kind: Const(U0) }, CanonicalVarInfo { kind: Const(U0) }, CanonicalVarInfo { kind: Region(U0) }] }, span: C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\std\src\macros.rs:143:28: 143:61, inferred_ty: fn(&[&'static str; 2], &[core::fmt::rt::Argument<'_>; 1]) -> std::fmt::Arguments<'_> {core::fmt::rt::<impl std::fmt::Arguments<'_>>::new_v1::<2, 1>}
+| 5: user_ty: Canonical { value: TypeOf(DefId(2:11668 ~ core[0ea9]::fmt::rt::{impl#0}::new_debug), UserArgs { args: ['^0, ^1], user_self_ty: Some(UserSelfTy { impl_def_id: DefId(2:11665 ~ core[0ea9]::fmt::rt::{impl#0}), self_ty: core::fmt::rt::Argument<'^2> }) }), max_universe: U0, variables: [CanonicalVarInfo { kind: Region(U0) }, CanonicalVarInfo { kind: Ty(General(U0)) }, CanonicalVarInfo { kind: Region(U0) }] }, span: examples/safe_buffer.rs:19:26: 19:30, inferred_ty: for<'a> fn(&'a std::vec::Vec<i32>) -> core::fmt::rt::Argument<'a> {core::fmt::rt::Argument::<'_>::new_debug::<std::vec::Vec<i32>>}
+| 6: user_ty: Canonical { value: TypeOf(DefId(2:11701 ~ core[0ea9]::fmt::rt::{impl#2}::new_v1), UserArgs { args: ['^0, ^1, ^2], user_self_ty: Some(UserSelfTy { impl_def_id: DefId(2:11695 ~ core[0ea9]::fmt::rt::{impl#2}), self_ty: std::fmt::Arguments<'^3> }) }), max_universe: U0, variables: [CanonicalVarInfo { kind: Region(U0) }, CanonicalVarInfo { kind: Const(U0) }, CanonicalVarInfo { kind: Const(U0) }, CanonicalVarInfo { kind: Region(U0) }] }, span: C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\std\src\macros.rs:143:28: 143:61, inferred_ty: fn(&[&'static str; 2], &[core::fmt::rt::Argument<'_>; 1]) -> std::fmt::Arguments<'_> {core::fmt::rt::<impl std::fmt::Arguments<'_>>::new_v1::<2, 1>}
+| 7: user_ty: Canonical { value: TypeOf(DefId(2:11668 ~ core[0ea9]::fmt::rt::{impl#0}::new_debug), UserArgs { args: ['^0, ^1], user_self_ty: Some(UserSelfTy { impl_def_id: DefId(2:11665 ~ core[0ea9]::fmt::rt::{impl#0}), self_ty: core::fmt::rt::Argument<'^2> }) }), max_universe: U0, variables: [CanonicalVarInfo { kind: Region(U0) }, CanonicalVarInfo { kind: Ty(General(U0)) }, CanonicalVarInfo { kind: Region(U0) }] }, span: examples/safe_buffer.rs:24:26: 24:30, inferred_ty: for<'a> fn(&'a &[i32]) -> core::fmt::rt::Argument<'a> {core::fmt::rt::Argument::<'_>::new_debug::<&[i32]>}
+| 8: user_ty: Canonical { value: TypeOf(DefId(2:11701 ~ core[0ea9]::fmt::rt::{impl#2}::new_v1), UserArgs { args: ['^0, ^1, ^2], user_self_ty: Some(UserSelfTy { impl_def_id: DefId(2:11695 ~ core[0ea9]::fmt::rt::{impl#2}), self_ty: std::fmt::Arguments<'^3> }) }), max_universe: U0, variables: [CanonicalVarInfo { kind: Region(U0) }, CanonicalVarInfo { kind: Const(U0) }, CanonicalVarInfo { kind: Const(U0) }, CanonicalVarInfo { kind: Region(U0) }] }, span: C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\std\src\macros.rs:143:28: 143:61, inferred_ty: fn(&[&'static str; 2], &[core::fmt::rt::Argument<'_>; 1]) -> std::fmt::Arguments<'_> {core::fmt::rt::<impl std::fmt::Arguments<'_>>::new_v1::<2, 1>}
+| 9: user_ty: Canonical { value: TypeOf(DefId(2:11666 ~ core[0ea9]::fmt::rt::{impl#0}::new_display), UserArgs { args: ['^0, ^1], user_self_ty: Some(UserSelfTy { impl_def_id: DefId(2:11665 ~ core[0ea9]::fmt::rt::{impl#0}), self_ty: core::fmt::rt::Argument<'^2> }) }), max_universe: U0, variables: [CanonicalVarInfo { kind: Region(U0) }, CanonicalVarInfo { kind: Ty(General(U0)) }, CanonicalVarInfo { kind: Region(U0) }] }, span: examples/safe_buffer.rs:28:28: 28:30, inferred_ty: for<'a> fn(&'a &i32) -> core::fmt::rt::Argument<'a> {core::fmt::rt::Argument::<'_>::new_display::<&i32>}
+| 10: user_ty: Canonical { value: TypeOf(DefId(3:6158 ~ alloc[3a62]::slice::{impl#0}::into_vec), UserArgs { args: [^0, ^1], user_self_ty: Some(UserSelfTy { impl_def_id: DefId(3:6118 ~ alloc[3a62]::slice::{impl#0}), self_ty: [^2] }) }), max_universe: U0, variables: [CanonicalVarInfo { kind: Ty(General(U0)) }, CanonicalVarInfo { kind: Ty(General(U0)) }, CanonicalVarInfo { kind: Ty(General(U0)) }] }, span: C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\alloc\src\macros.rs:50:9: 50:24, inferred_ty: fn(std::boxed::Box<[i32]>) -> std::vec::Vec<i32> {std::slice::<impl [i32]>::into_vec::<std::alloc::Global>}
+| 11: user_ty: Canonical { value: TypeOf(DefId(2:11701 ~ core[0ea9]::fmt::rt::{impl#2}::new_v1), UserArgs { args: ['^0, ^1, ^2], user_self_ty: Some(UserSelfTy { impl_def_id: DefId(2:11695 ~ core[0ea9]::fmt::rt::{impl#2}), self_ty: std::fmt::Arguments<'^3> }) }), max_universe: U0, variables: [CanonicalVarInfo { kind: Region(U0) }, CanonicalVarInfo { kind: Const(U0) }, CanonicalVarInfo { kind: Const(U0) }, CanonicalVarInfo { kind: Region(U0) }] }, span: C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\std\src\macros.rs:143:28: 143:61, inferred_ty: fn(&[&'static str; 2], &[core::fmt::rt::Argument<'_>; 1]) -> std::fmt::Arguments<'_> {core::fmt::rt::<impl std::fmt::Arguments<'_>>::new_v1::<2, 1>}
+| 12: user_ty: Canonical { value: TypeOf(DefId(2:11668 ~ core[0ea9]::fmt::rt::{impl#0}::new_debug), UserArgs { args: ['^0, ^1], user_self_ty: Some(UserSelfTy { impl_def_id: DefId(2:11665 ~ core[0ea9]::fmt::rt::{impl#0}), self_ty: core::fmt::rt::Argument<'^2> }) }), max_universe: U0, variables: [CanonicalVarInfo { kind: Region(U0) }, CanonicalVarInfo { kind: Ty(General(U0)) }, CanonicalVarInfo { kind: Region(U0) }] }, span: examples/safe_buffer.rs:35:27: 35:31, inferred_ty: for<'a> fn(&'a std::vec::Vec<i32>) -> core::fmt::rt::Argument<'a> {core::fmt::rt::Argument::<'_>::new_debug::<std::vec::Vec<i32>>}
+| 13: user_ty: Canonical { value: TypeOf(DefId(2:11701 ~ core[0ea9]::fmt::rt::{impl#2}::new_v1), UserArgs { args: ['^0, ^1, ^2], user_self_ty: Some(UserSelfTy { impl_def_id: DefId(2:11695 ~ core[0ea9]::fmt::rt::{impl#2}), self_ty: std::fmt::Arguments<'^3> }) }), max_universe: U0, variables: [CanonicalVarInfo { kind: Region(U0) }, CanonicalVarInfo { kind: Const(U0) }, CanonicalVarInfo { kind: Const(U0) }, CanonicalVarInfo { kind: Region(U0) }] }, span: C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\std\src\macros.rs:143:28: 143:61, inferred_ty: fn(&[&'static str; 2], &[core::fmt::rt::Argument<'_>; 1]) -> std::fmt::Arguments<'_> {core::fmt::rt::<impl std::fmt::Arguments<'_>>::new_v1::<2, 1>}
+| 14: user_ty: Canonical { value: TypeOf(DefId(2:11668 ~ core[0ea9]::fmt::rt::{impl#0}::new_debug), UserArgs { args: ['^0, ^1], user_self_ty: Some(UserSelfTy { impl_def_id: DefId(2:11665 ~ core[0ea9]::fmt::rt::{impl#0}), self_ty: core::fmt::rt::Argument<'^2> }) }), max_universe: U0, variables: [CanonicalVarInfo { kind: Region(U0) }, CanonicalVarInfo { kind: Ty(General(U0)) }, CanonicalVarInfo { kind: Region(U0) }] }, span: examples/safe_buffer.rs:39:27: 39:31, inferred_ty: for<'a> fn(&'a &[i32]) -> core::fmt::rt::Argument<'a> {core::fmt::rt::Argument::<'_>::new_debug::<&[i32]>}
+| 15: user_ty: Canonical { value: TypeOf(DefId(2:11701 ~ core[0ea9]::fmt::rt::{impl#2}::new_v1), UserArgs { args: ['^0, ^1, ^2], user_self_ty: Some(UserSelfTy { impl_def_id: DefId(2:11695 ~ core[0ea9]::fmt::rt::{impl#2}), self_ty: std::fmt::Arguments<'^3> }) }), max_universe: U0, variables: [CanonicalVarInfo { kind: Region(U0) }, CanonicalVarInfo { kind: Const(U0) }, CanonicalVarInfo { kind: Const(U0) }, CanonicalVarInfo { kind: Region(U0) }] }, span: C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\std\src\macros.rs:143:28: 143:61, inferred_ty: fn(&[&'static str; 2], &[core::fmt::rt::Argument<'_>; 1]) -> std::fmt::Arguments<'_> {core::fmt::rt::<impl std::fmt::Arguments<'_>>::new_v1::<2, 1>}
+| 16: user_ty: Canonical { value: TypeOf(DefId(2:11668 ~ core[0ea9]::fmt::rt::{impl#0}::new_debug), UserArgs { args: ['^0, ^1], user_self_ty: Some(UserSelfTy { impl_def_id: DefId(2:11665 ~ core[0ea9]::fmt::rt::{impl#0}), self_ty: core::fmt::rt::Argument<'^2> }) }), max_universe: U0, variables: [CanonicalVarInfo { kind: Region(U0) }, CanonicalVarInfo { kind: Ty(General(U0)) }, CanonicalVarInfo { kind: Region(U0) }] }, span: examples/safe_buffer.rs:45:27: 45:31, inferred_ty: for<'a> fn(&'a std::vec::Vec<i32>) -> core::fmt::rt::Argument<'a> {core::fmt::rt::Argument::<'_>::new_debug::<std::vec::Vec<i32>>}
+|
+fn safe_buffer_operations() -> Result<(), Box<dyn std::error::Error>> {
+    let mut _0: std::result::Result<(), std::boxed::Box<dyn std::error::Error>>;
+    let _1: std::vec::Vec<i32>;
+    let mut _2: std::boxed::Box<[i32]>;
+    let mut _3: std::boxed::Box<[i32; 5]>;
+    let mut _4: usize;
+    let mut _5: usize;
+    let mut _6: *mut u8;
+    let mut _7: std::boxed::Box<[i32; 5]>;
+    let mut _9: usize;
+    let mut _10: &std::vec::Vec<i32>;
+    let _11: ();
+    let mut _12: &mut std::vec::Vec<i32>;
+    let mut _13: &[i32];
+    let _14: &[i32];
+    let mut _15: &std::vec::Vec<i32>;
+    let _16: &std::vec::Vec<i32>;
+    let _17: ();
+    let _18: ();
+    let mut _19: std::fmt::Arguments<'_>;
+    let mut _20: &[&str; 2];
+    let _21: &[&str; 2];
+    let _22: [&str; 2];
+    let mut _23: &[core::fmt::rt::Argument<'_>; 1];
+    let _24: &[core::fmt::rt::Argument<'_>; 1];
+    let _25: [core::fmt::rt::Argument<'_>; 1];
+    let mut _26: core::fmt::rt::Argument<'_>;
+    let mut _27: &std::vec::Vec<i32>;
+    let _28: &std::vec::Vec<i32>;
+    let _29: ();
+    let mut _30: std::iter::Enumerate<std::slice::Iter<'_, i32>>;
+    let mut _31: std::iter::Enumerate<std::slice::Iter<'_, i32>>;
+    let mut _32: std::slice::Iter<'_, i32>;
+    let mut _33: &[i32];
+    let _34: &[i32];
+    let mut _35: &std::vec::Vec<i32>;
+    let mut _37: ();
+    let _38: ();
+    let mut _39: std::option::Option<(usize, &i32)>;
+    let mut _40: &mut std::iter::Enumerate<std::slice::Iter<'_, i32>>;
+    let mut _41: &mut std::iter::Enumerate<std::slice::Iter<'_, i32>>;
+    let mut _42: isize;
+    let mut _43: !;
+    let mut _46: bool;
+    let mut _47: usize;
+    let mut _48: usize;
+    let mut _49: &std::vec::Vec<i32>;
+    let mut _50: i32;
+    let mut _51: (i32, bool);
+    let mut _52: &mut i32;
+    let mut _53: &mut std::vec::Vec<i32>;
+    let mut _54: usize;
+    let _55: ();
+    let _56: ();
+    let mut _57: std::fmt::Arguments<'_>;
+    let mut _58: &[&str; 2];
+    let _59: &[&str; 2];
+    let _60: [&str; 2];
+    let mut _61: &[core::fmt::rt::Argument<'_>; 1];
+    let _62: &[core::fmt::rt::Argument<'_>; 1];
+    let _63: [core::fmt::rt::Argument<'_>; 1];
+    let mut _64: core::fmt::rt::Argument<'_>;
+    let mut _65: &std::vec::Vec<i32>;
+    let _66: &std::vec::Vec<i32>;
+    let _68: &[i32];
+    let mut _69: &std::vec::Vec<i32>;
+    let mut _70: std::ops::RangeFull;
+    let _72: &[i32];
+    let mut _73: &[i32];
+    let mut _74: std::ops::RangeTo<usize>;
+    let mut _75: usize;
+    let mut _76: usize;
+    let mut _77: &[i32];
+    let _78: ();
+    let _79: ();
+    let mut _80: std::fmt::Arguments<'_>;
+    let mut _81: &[&str; 2];
+    let _82: &[&str; 2];
+    let _83: [&str; 2];
+    let mut _84: &[core::fmt::rt::Argument<'_>; 1];
+    let _85: &[core::fmt::rt::Argument<'_>; 1];
+    let _86: [core::fmt::rt::Argument<'_>; 1];
+    let mut _87: core::fmt::rt::Argument<'_>;
+    let mut _88: &&[i32];
+    let _89: &&[i32];
+    let _90: ();
+    let mut _91: std::option::Option<&i32>;
+    let mut _92: &[i32];
+    let _93: &[i32];
+    let mut _94: &std::vec::Vec<i32>;
+    let mut _95: isize;
+    let _97: ();
+    let _98: ();
+    let mut _99: std::fmt::Arguments<'_>;
+    let mut _100: &[&str; 2];
+    let _101: &[&str; 2];
+    let _102: [&str; 2];
+    let mut _103: &[core::fmt::rt::Argument<'_>; 1];
+    let _104: &[core::fmt::rt::Argument<'_>; 1];
+    let _105: [core::fmt::rt::Argument<'_>; 1];
+    let mut _106: core::fmt::rt::Argument<'_>;
+    let mut _107: &&i32;
+    let _108: &&i32;
+    let mut _110: std::boxed::Box<[i32]>;
+    let mut _111: std::boxed::Box<[i32; 3]>;
+    let mut _112: usize;
+    let mut _113: usize;
+    let mut _114: *mut u8;
+    let mut _115: std::boxed::Box<[i32; 3]>;
+    let _116: ();
+    let mut _117: &mut std::vec::Vec<i32>;
+    let mut _118: usize;
+    let mut _119: &std::vec::Vec<i32>;
+    let _120: ();
+    let mut _121: &mut std::vec::Vec<i32>;
+    let mut _122: &[i32];
+    let _123: &[i32];
+    let mut _124: &std::vec::Vec<i32>;
+    let _125: &std::vec::Vec<i32>;
+    let _126: ();
+    let _127: ();
+    let mut _128: std::fmt::Arguments<'_>;
+    let mut _129: &[&str; 2];
+    let _130: &[&str; 2];
+    let _131: [&str; 2];
+    let mut _132: &[core::fmt::rt::Argument<'_>; 1];
+    let _133: &[core::fmt::rt::Argument<'_>; 1];
+    let _134: [core::fmt::rt::Argument<'_>; 1];
+    let mut _135: core::fmt::rt::Argument<'_>;
+    let mut _136: &std::vec::Vec<i32>;
+    let _137: &std::vec::Vec<i32>;
+    let _138: ();
+    let mut _139: std::slice::Chunks<'_, i32>;
+    let mut _140: std::slice::Chunks<'_, i32>;
+    let mut _141: &[i32];
+    let _142: &[i32];
+    let mut _143: &std::vec::Vec<i32>;
+    let _145: ();
+    let mut _146: std::option::Option<&[i32]>;
+    let mut _147: &mut std::slice::Chunks<'_, i32>;
+    let mut _148: &mut std::slice::Chunks<'_, i32>;
+    let mut _149: isize;
+    let mut _150: !;
+    let _152: ();
+    let _153: ();
+    let mut _154: std::fmt::Arguments<'_>;
+    let mut _155: &[&str; 2];
+    let _156: &[&str; 2];
+    let _157: [&str; 2];
+    let mut _158: &[core::fmt::rt::Argument<'_>; 1];
+    let _159: &[core::fmt::rt::Argument<'_>; 1];
+    let _160: [core::fmt::rt::Argument<'_>; 1];
+    let mut _161: core::fmt::rt::Argument<'_>;
+    let mut _162: &&[i32];
+    let _163: &&[i32];
+    let _164: ();
+    let mut _165: &mut std::vec::Vec<i32>;
+    let _166: ();
+    let mut _167: &mut std::vec::Vec<i32>;
+    let _168: ();
+    let _169: ();
+    let mut _170: std::fmt::Arguments<'_>;
+    let mut _171: &[&str; 2];
+    let _172: &[&str; 2];
+    let _173: [&str; 2];
+    let mut _174: &[core::fmt::rt::Argument<'_>; 1];
+    let _175: &[core::fmt::rt::Argument<'_>; 1];
+    let _176: [core::fmt::rt::Argument<'_>; 1];
+    let mut _177: core::fmt::rt::Argument<'_>;
+    let mut _178: &std::vec::Vec<i32>;
+    let _179: &std::vec::Vec<i32>;
+    let mut _180: ();
+    scope 1 {
+        debug data => _1;
+        let mut _8: std::vec::Vec<i32>;
+        scope 2 {
+            debug buffer => _8;
+            let mut _36: std::iter::Enumerate<std::slice::Iter<'_, i32>>;
+            let _67: &[i32];
+            let mut _186: &[&str; 2];
+            let mut _187: &[&str; 2];
+            scope 3 {
+                debug iter => _36;
+                let _44: usize;
+                let _45: i32;
+                scope 4 {
+                    debug i => _44;
+                    debug item => _45;
+                }
+            }
+            scope 5 {
+                debug slice => _67;
+                let _71: &[i32];
+                scope 6 {
+                    debug safe_window => _71;
+                    let _109: std::vec::Vec<i32>;
+                    let mut _185: &[&str; 2];
+                    scope 7 {
+                        debug value => _96;
+                        let _96: &i32;
+                        let mut _184: &[&str; 2];
+                    }
+                    scope 8 {
+                        debug more_data => _109;
+                        let mut _144: std::slice::Chunks<'_, i32>;
+                        let mut _182: &[&str; 2];
+                        let mut _183: &[&str; 2];
+                        scope 9 {
+                            debug iter => _144;
+                            let _151: &[i32];
+                            scope 10 {
+                                debug chunk => _151;
+                                let mut _181: &[&str; 2];
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    bb0: {
+        StorageLive(_1);
+        StorageLive(_2);
+        StorageLive(_3);
+        _4 = SizeOf([i32; 5]);
+        _5 = AlignOf([i32; 5]);
+        _6 = alloc::alloc::exchange_malloc(move _4, move _5) -> [return: bb1, unwind: bb87];
+    }
+
+    bb1: {
+        StorageLive(_7);
+        _7 = ShallowInitBox(move _6, [i32; 5]);
+        (*_7) = [const 1_i32, const 2_i32, const 3_i32, const 4_i32, const 5_i32];
+        _3 = move _7;
+        _2 = move _3 as std::boxed::Box<[i32]> (PointerCoercion(Unsize, Implicit));
+        drop(_3) -> [return: bb2, unwind: bb85];
+    }
+
+    bb2: {
+        drop(_7) -> [return: bb3, unwind: bb86];
+    }
+
+    bb3: {
+        StorageDead(_7);
+        StorageDead(_3);
+        _1 = slice::<impl [i32]>::into_vec::<std::alloc::Global>(move _2) -> [return: bb4, unwind: bb86];
+    }
+
+    bb4: {
+        StorageDead(_2);
+        FakeRead(ForLet(None), _1);
+        StorageLive(_8);
+        StorageLive(_9);
+        StorageLive(_10);
+        _10 = &_1;
+        _9 = Vec::<i32>::len(move _10) -> [return: bb5, unwind: bb84];
+    }
+
+    bb5: {
+        StorageDead(_10);
+        _8 = Vec::<i32>::with_capacity(move _9) -> [return: bb6, unwind: bb84];
+    }
+
+    bb6: {
+        StorageDead(_9);
+        FakeRead(ForLet(None), _8);
+        StorageLive(_11);
+        StorageLive(_12);
+        _12 = &mut _8;
+        StorageLive(_13);
+        StorageLive(_14);
+        StorageLive(_15);
+        StorageLive(_16);
+        _16 = &_1;
+        _15 = &(*_16);
+        _14 = <Vec<i32> as Deref>::deref(move _15) -> [return: bb7, unwind: bb83];
+    }
+
+    bb7: {
+        _13 = &(*_14);
+        StorageDead(_15);
+        _11 = Vec::<i32>::extend_from_slice(move _12, move _13) -> [return: bb8, unwind: bb83];
+    }
+
+    bb8: {
+        StorageDead(_13);
+        StorageDead(_12);
+        StorageDead(_16);
+        StorageDead(_14);
+        StorageDead(_11);
+        StorageLive(_17);
+        StorageLive(_18);
+        StorageLive(_19);
+        StorageLive(_20);
+        StorageLive(_21);
+        _187 = const safe_buffer_operations::promoted[6];
+        _21 = &(*_187);
+        _20 = &(*_21);
+        StorageLive(_23);
+        StorageLive(_24);
+        StorageLive(_25);
+        StorageLive(_26);
+        StorageLive(_27);
+        StorageLive(_28);
+        _28 = &_8;
+        _27 = &(*_28);
+        _26 = core::fmt::rt::Argument::<'_>::new_debug::<Vec<i32>>(move _27) -> [return: bb9, unwind: bb83];
+    }
+
+    bb9: {
+        StorageDead(_27);
+        _25 = [move _26];
+        StorageDead(_26);
+        _24 = &_25;
+        _23 = &(*_24);
+        _19 = core::fmt::rt::<impl Arguments<'_>>::new_v1::<2, 1>(move _20, move _23) -> [return: bb10, unwind: bb83];
+    }
+
+    bb10: {
+        StorageDead(_23);
+        StorageDead(_20);
+        _18 = _print(move _19) -> [return: bb11, unwind: bb83];
+    }
+
+    bb11: {
+        StorageDead(_19);
+        StorageDead(_28);
+        StorageDead(_25);
+        StorageDead(_24);
+        StorageDead(_21);
+        StorageDead(_18);
+        _17 = const ();
+        StorageDead(_17);
+        StorageLive(_29);
+        StorageLive(_30);
+        StorageLive(_31);
+        StorageLive(_32);
+        StorageLive(_33);
+        StorageLive(_34);
+        StorageLive(_35);
+        _35 = &_1;
+        _34 = <Vec<i32> as Deref>::deref(move _35) -> [return: bb12, unwind: bb83];
+    }
+
+    bb12: {
+        _33 = &(*_34);
+        StorageDead(_35);
+        _32 = core::slice::<impl [i32]>::iter(move _33) -> [return: bb13, unwind: bb83];
+    }
+
+    bb13: {
+        StorageDead(_33);
+        _31 = <std::slice::Iter<'_, i32> as Iterator>::enumerate(move _32) -> [return: bb14, unwind: bb83];
+    }
+
+    bb14: {
+        StorageDead(_32);
+        _30 = <Enumerate<std::slice::Iter<'_, i32>> as IntoIterator>::into_iter(move _31) -> [return: bb15, unwind: bb83];
+    }
+
+    bb15: {
+        StorageDead(_31);
+        PlaceMention(_30);
+        StorageLive(_36);
+        _36 = move _30;
+        goto -> bb16;
+    }
+
+    bb16: {
+        falseUnwind -> [real: bb17, unwind: bb83];
+    }
+
+    bb17: {
+        StorageLive(_38);
+        StorageLive(_39);
+        StorageLive(_40);
+        StorageLive(_41);
+        _41 = &mut _36;
+        _40 = &mut (*_41);
+        _39 = <Enumerate<std::slice::Iter<'_, i32>> as Iterator>::next(move _40) -> [return: bb18, unwind: bb83];
+    }
+
+    bb18: {
+        StorageDead(_40);
+        PlaceMention(_39);
+        _42 = discriminant(_39);
+        switchInt(move _42) -> [0: bb20, 1: bb21, otherwise: bb19];
+    }
+
+    bb19: {
+        FakeRead(ForMatchedPlace(None), _39);
+        unreachable;
+    }
+
+    bb20: {
+        falseEdge -> [real: bb22, imaginary: bb21];
+    }
+
+    bb21: {
+        StorageLive(_44);
+        _44 = copy (((_39 as Some).0: (usize, &i32)).0: usize);
+        StorageLive(_45);
+        _45 = copy (*(((_39 as Some).0: (usize, &i32)).1: &i32));
+        StorageLive(_46);
+        StorageLive(_47);
+        _47 = copy _44;
+        StorageLive(_48);
+        StorageLive(_49);
+        _49 = &_8;
+        _48 = Vec::<i32>::len(move _49) -> [return: bb23, unwind: bb83];
+    }
+
+    bb22: {
+        _29 = const ();
+        StorageDead(_41);
+        StorageDead(_39);
+        StorageDead(_38);
+        StorageDead(_36);
+        StorageDead(_34);
+        StorageDead(_30);
+        StorageDead(_29);
+        StorageLive(_55);
+        StorageLive(_56);
+        StorageLive(_57);
+        StorageLive(_58);
+        StorageLive(_59);
+        _186 = const safe_buffer_operations::promoted[5];
+        _59 = &(*_186);
+        _58 = &(*_59);
+        StorageLive(_61);
+        StorageLive(_62);
+        StorageLive(_63);
+        StorageLive(_64);
+        StorageLive(_65);
+        StorageLive(_66);
+        _66 = &_8;
+        _65 = &(*_66);
+        _64 = core::fmt::rt::Argument::<'_>::new_debug::<Vec<i32>>(move _65) -> [return: bb29, unwind: bb83];
+    }
+
+    bb23: {
+        StorageDead(_49);
+        _46 = Lt(move _47, move _48);
+        switchInt(move _46) -> [0: bb27, otherwise: bb24];
+    }
+
+    bb24: {
+        StorageDead(_48);
+        StorageDead(_47);
+        StorageLive(_50);
+        _50 = copy _45;
+        _51 = AddWithOverflow(copy _50, const 1_i32);
+        assert(!move (_51.1: bool), "attempt to compute `{} + {}`, which would overflow", move _50, const 1_i32) -> [success: bb25, unwind: bb83];
+    }
+
+    bb25: {
+        StorageLive(_52);
+        StorageLive(_53);
+        _53 = &mut _8;
+        StorageLive(_54);
+        _54 = copy _44;
+        _52 = <Vec<i32> as IndexMut<usize>>::index_mut(move _53, move _54) -> [return: bb26, unwind: bb83];
+    }
+
+    bb26: {
+        StorageDead(_54);
+        StorageDead(_53);
+        (*_52) = move (_51.0: i32);
+        StorageDead(_50);
+        StorageDead(_52);
+        _38 = const ();
+        goto -> bb28;
+    }
+
+    bb27: {
+        StorageDead(_48);
+        StorageDead(_47);
+        _38 = const ();
+        goto -> bb28;
+    }
+
+    bb28: {
+        StorageDead(_46);
+        StorageDead(_45);
+        StorageDead(_44);
+        StorageDead(_41);
+        StorageDead(_39);
+        StorageDead(_38);
+        _37 = const ();
+        goto -> bb16;
+    }
+
+    bb29: {
+        StorageDead(_65);
+        _63 = [move _64];
+        StorageDead(_64);
+        _62 = &_63;
+        _61 = &(*_62);
+        _57 = core::fmt::rt::<impl Arguments<'_>>::new_v1::<2, 1>(move _58, move _61) -> [return: bb30, unwind: bb83];
+    }
+
+    bb30: {
+        StorageDead(_61);
+        StorageDead(_58);
+        _56 = _print(move _57) -> [return: bb31, unwind: bb83];
+    }
+
+    bb31: {
+        StorageDead(_57);
+        StorageDead(_66);
+        StorageDead(_63);
+        StorageDead(_62);
+        StorageDead(_59);
+        StorageDead(_56);
+        _55 = const ();
+        StorageDead(_55);
+        StorageLive(_67);
+        StorageLive(_68);
+        StorageLive(_69);
+        _69 = &_1;
+        StorageLive(_70);
+        _70 = RangeFull;
+        _68 = <Vec<i32> as Index<RangeFull>>::index(move _69, move _70) -> [return: bb32, unwind: bb83];
+    }
+
+    bb32: {
+        StorageDead(_70);
+        StorageDead(_69);
+        _67 = &(*_68);
+        FakeRead(ForLet(None), _67);
+        StorageLive(_71);
+        StorageLive(_72);
+        StorageLive(_73);
+        _73 = &(*_67);
+        StorageLive(_74);
+        StorageLive(_75);
+        StorageLive(_76);
+        StorageLive(_77);
+        _77 = &(*_67);
+        _76 = core::slice::<impl [i32]>::len(move _77) -> [return: bb33, unwind: bb83];
+    }
+
+    bb33: {
+        StorageDead(_77);
+        _75 = <usize as Ord>::min(move _76, const 3_usize) -> [return: bb34, unwind: bb83];
+    }
+
+    bb34: {
+        StorageDead(_76);
+        _74 = RangeTo::<usize> { end: move _75 };
+        StorageDead(_75);
+        _72 = <[i32] as Index<RangeTo<usize>>>::index(move _73, move _74) -> [return: bb35, unwind: bb83];
+    }
+
+    bb35: {
+        StorageDead(_74);
+        StorageDead(_73);
+        _71 = &(*_72);
+        FakeRead(ForLet(None), _71);
+        StorageLive(_78);
+        StorageLive(_79);
+        StorageLive(_80);
+        StorageLive(_81);
+        StorageLive(_82);
+        _185 = const safe_buffer_operations::promoted[4];
+        _82 = &(*_185);
+        _81 = &(*_82);
+        StorageLive(_84);
+        StorageLive(_85);
+        StorageLive(_86);
+        StorageLive(_87);
+        StorageLive(_88);
+        StorageLive(_89);
+        _89 = &_71;
+        _88 = &(*_89);
+        _87 = core::fmt::rt::Argument::<'_>::new_debug::<&[i32]>(move _88) -> [return: bb36, unwind: bb83];
+    }
+
+    bb36: {
+        StorageDead(_88);
+        _86 = [move _87];
+        StorageDead(_87);
+        _85 = &_86;
+        _84 = &(*_85);
+        _80 = core::fmt::rt::<impl Arguments<'_>>::new_v1::<2, 1>(move _81, move _84) -> [return: bb37, unwind: bb83];
+    }
+
+    bb37: {
+        StorageDead(_84);
+        StorageDead(_81);
+        _79 = _print(move _80) -> [return: bb38, unwind: bb83];
+    }
+
+    bb38: {
+        StorageDead(_80);
+        StorageDead(_89);
+        StorageDead(_86);
+        StorageDead(_85);
+        StorageDead(_82);
+        StorageDead(_79);
+        _78 = const ();
+        StorageDead(_78);
+        StorageLive(_90);
+        StorageLive(_91);
+        StorageLive(_92);
+        StorageLive(_93);
+        StorageLive(_94);
+        _94 = &_8;
+        _93 = <Vec<i32> as Deref>::deref(move _94) -> [return: bb39, unwind: bb83];
+    }
+
+    bb39: {
+        _92 = &(*_93);
+        StorageDead(_94);
+        _91 = core::slice::<impl [i32]>::get::<usize>(move _92, const 2_usize) -> [return: bb40, unwind: bb83];
+    }
+
+    bb40: {
+        StorageDead(_92);
+        PlaceMention(_91);
+        _95 = discriminant(_91);
+        switchInt(move _95) -> [1: bb41, otherwise: bb46];
+    }
+
+    bb41: {
+        falseEdge -> [real: bb42, imaginary: bb46];
+    }
+
+    bb42: {
+        StorageLive(_96);
+        _96 = copy ((_91 as Some).0: &i32);
+        StorageLive(_97);
+        StorageLive(_98);
+        StorageLive(_99);
+        StorageLive(_100);
+        StorageLive(_101);
+        _184 = const safe_buffer_operations::promoted[3];
+        _101 = &(*_184);
+        _100 = &(*_101);
+        StorageLive(_103);
+        StorageLive(_104);
+        StorageLive(_105);
+        StorageLive(_106);
+        StorageLive(_107);
+        StorageLive(_108);
+        _108 = &_96;
+        _107 = &(*_108);
+        _106 = core::fmt::rt::Argument::<'_>::new_display::<&i32>(move _107) -> [return: bb43, unwind: bb83];
+    }
+
+    bb43: {
+        StorageDead(_107);
+        _105 = [move _106];
+        StorageDead(_106);
+        _104 = &_105;
+        _103 = &(*_104);
+        _99 = core::fmt::rt::<impl Arguments<'_>>::new_v1::<2, 1>(move _100, move _103) -> [return: bb44, unwind: bb83];
+    }
+
+    bb44: {
+        StorageDead(_103);
+        StorageDead(_100);
+        _98 = _print(move _99) -> [return: bb45, unwind: bb83];
+    }
+
+    bb45: {
+        StorageDead(_99);
+        StorageDead(_108);
+        StorageDead(_105);
+        StorageDead(_104);
+        StorageDead(_101);
+        StorageDead(_98);
+        _97 = const ();
+        StorageDead(_97);
+        _90 = const ();
+        StorageDead(_96);
+        goto -> bb47;
+    }
+
+    bb46: {
+        _90 = const ();
+        goto -> bb47;
+    }
+
+    bb47: {
+        StorageDead(_93);
+        StorageDead(_91);
+        StorageDead(_90);
+        StorageLive(_109);
+        StorageLive(_110);
+        StorageLive(_111);
+        _112 = SizeOf([i32; 3]);
+        _113 = AlignOf([i32; 3]);
+        _114 = alloc::alloc::exchange_malloc(move _112, move _113) -> [return: bb48, unwind: bb83];
+    }
+
+    bb48: {
+        StorageLive(_115);
+        _115 = ShallowInitBox(move _114, [i32; 3]);
+        (*_115) = [const 6_i32, const 7_i32, const 8_i32];
+        _111 = move _115;
+        _110 = move _111 as std::boxed::Box<[i32]> (PointerCoercion(Unsize, Implicit));
+        drop(_111) -> [return: bb49, unwind: bb81];
+    }
+
+    bb49: {
+        drop(_115) -> [return: bb50, unwind: bb82];
+    }
+
+    bb50: {
+        StorageDead(_115);
+        StorageDead(_111);
+        _109 = slice::<impl [i32]>::into_vec::<std::alloc::Global>(move _110) -> [return: bb51, unwind: bb82];
+    }
+
+    bb51: {
+        StorageDead(_110);
+        FakeRead(ForLet(None), _109);
+        StorageLive(_116);
+        StorageLive(_117);
+        _117 = &mut _8;
+        StorageLive(_118);
+        StorageLive(_119);
+        _119 = &_109;
+        _118 = Vec::<i32>::len(move _119) -> [return: bb52, unwind: bb80];
+    }
+
+    bb52: {
+        StorageDead(_119);
+        _116 = Vec::<i32>::reserve(move _117, move _118) -> [return: bb53, unwind: bb80];
+    }
+
+    bb53: {
+        StorageDead(_118);
+        StorageDead(_117);
+        StorageDead(_116);
+        StorageLive(_120);
+        StorageLive(_121);
+        _121 = &mut _8;
+        StorageLive(_122);
+        StorageLive(_123);
+        StorageLive(_124);
+        StorageLive(_125);
+        _125 = &_109;
+        _124 = &(*_125);
+        _123 = <Vec<i32> as Deref>::deref(move _124) -> [return: bb54, unwind: bb80];
+    }
+
+    bb54: {
+        _122 = &(*_123);
+        StorageDead(_124);
+        _120 = Vec::<i32>::extend_from_slice(move _121, move _122) -> [return: bb55, unwind: bb80];
+    }
+
+    bb55: {
+        StorageDead(_122);
+        StorageDead(_121);
+        StorageDead(_125);
+        StorageDead(_123);
+        StorageDead(_120);
+        StorageLive(_126);
+        StorageLive(_127);
+        StorageLive(_128);
+        StorageLive(_129);
+        StorageLive(_130);
+        _183 = const safe_buffer_operations::promoted[2];
+        _130 = &(*_183);
+        _129 = &(*_130);
+        StorageLive(_132);
+        StorageLive(_133);
+        StorageLive(_134);
+        StorageLive(_135);
+        StorageLive(_136);
+        StorageLive(_137);
+        _137 = &_8;
+        _136 = &(*_137);
+        _135 = core::fmt::rt::Argument::<'_>::new_debug::<Vec<i32>>(move _136) -> [return: bb56, unwind: bb80];
+    }
+
+    bb56: {
+        StorageDead(_136);
+        _134 = [move _135];
+        StorageDead(_135);
+        _133 = &_134;
+        _132 = &(*_133);
+        _128 = core::fmt::rt::<impl Arguments<'_>>::new_v1::<2, 1>(move _129, move _132) -> [return: bb57, unwind: bb80];
+    }
+
+    bb57: {
+        StorageDead(_132);
+        StorageDead(_129);
+        _127 = _print(move _128) -> [return: bb58, unwind: bb80];
+    }
+
+    bb58: {
+        StorageDead(_128);
+        StorageDead(_137);
+        StorageDead(_134);
+        StorageDead(_133);
+        StorageDead(_130);
+        StorageDead(_127);
+        _126 = const ();
+        StorageDead(_126);
+        StorageLive(_138);
+        StorageLive(_139);
+        StorageLive(_140);
+        StorageLive(_141);
+        StorageLive(_142);
+        StorageLive(_143);
+        _143 = &_8;
+        _142 = <Vec<i32> as Deref>::deref(move _143) -> [return: bb59, unwind: bb80];
+    }
+
+    bb59: {
+        _141 = &(*_142);
+        StorageDead(_143);
+        _140 = core::slice::<impl [i32]>::chunks(move _141, const 2_usize) -> [return: bb60, unwind: bb80];
+    }
+
+    bb60: {
+        StorageDead(_141);
+        _139 = <Chunks<'_, i32> as IntoIterator>::into_iter(move _140) -> [return: bb61, unwind: bb80];
+    }
+
+    bb61: {
+        StorageDead(_140);
+        PlaceMention(_139);
+        StorageLive(_144);
+        _144 = move _139;
+        goto -> bb62;
+    }
+
+    bb62: {
+        falseUnwind -> [real: bb63, unwind: bb80];
+    }
+
+    bb63: {
+        StorageLive(_145);
+        StorageLive(_146);
+        StorageLive(_147);
+        StorageLive(_148);
+        _148 = &mut _144;
+        _147 = &mut (*_148);
+        _146 = <Chunks<'_, i32> as Iterator>::next(move _147) -> [return: bb64, unwind: bb80];
+    }
+
+    bb64: {
+        StorageDead(_147);
+        PlaceMention(_146);
+        _149 = discriminant(_146);
+        switchInt(move _149) -> [0: bb66, 1: bb67, otherwise: bb65];
+    }
+
+    bb65: {
+        FakeRead(ForMatchedPlace(None), _146);
+        unreachable;
+    }
+
+    bb66: {
+        falseEdge -> [real: bb68, imaginary: bb67];
+    }
+
+    bb67: {
+        StorageLive(_151);
+        _151 = copy ((_146 as Some).0: &[i32]);
+        StorageLive(_152);
+        StorageLive(_153);
+        StorageLive(_154);
+        StorageLive(_155);
+        StorageLive(_156);
+        _181 = const safe_buffer_operations::promoted[0];
+        _156 = &(*_181);
+        _155 = &(*_156);
+        StorageLive(_158);
+        StorageLive(_159);
+        StorageLive(_160);
+        StorageLive(_161);
+        StorageLive(_162);
+        StorageLive(_163);
+        _163 = &_151;
+        _162 = &(*_163);
+        _161 = core::fmt::rt::Argument::<'_>::new_debug::<&[i32]>(move _162) -> [return: bb69, unwind: bb80];
+    }
+
+    bb68: {
+        _138 = const ();
+        StorageDead(_148);
+        StorageDead(_146);
+        StorageDead(_145);
+        StorageDead(_144);
+        StorageDead(_142);
+        StorageDead(_139);
+        StorageDead(_138);
+        StorageLive(_164);
+        StorageLive(_165);
+        _165 = &mut _8;
+        _164 = Vec::<i32>::clear(move _165) -> [return: bb72, unwind: bb80];
+    }
+
+    bb69: {
+        StorageDead(_162);
+        _160 = [move _161];
+        StorageDead(_161);
+        _159 = &_160;
+        _158 = &(*_159);
+        _154 = core::fmt::rt::<impl Arguments<'_>>::new_v1::<2, 1>(move _155, move _158) -> [return: bb70, unwind: bb80];
+    }
+
+    bb70: {
+        StorageDead(_158);
+        StorageDead(_155);
+        _153 = _print(move _154) -> [return: bb71, unwind: bb80];
+    }
+
+    bb71: {
+        StorageDead(_154);
+        StorageDead(_163);
+        StorageDead(_160);
+        StorageDead(_159);
+        StorageDead(_156);
+        StorageDead(_153);
+        _152 = const ();
+        StorageDead(_152);
+        _145 = const ();
+        StorageDead(_151);
+        StorageDead(_148);
+        StorageDead(_146);
+        StorageDead(_145);
+        _37 = const ();
+        goto -> bb62;
+    }
+
+    bb72: {
+        StorageDead(_165);
+        StorageDead(_164);
+        StorageLive(_166);
+        StorageLive(_167);
+        _167 = &mut _8;
+        _166 = Vec::<i32>::shrink_to_fit(move _167) -> [return: bb73, unwind: bb80];
+    }
+
+    bb73: {
+        StorageDead(_167);
+        StorageDead(_166);
+        StorageLive(_168);
+        StorageLive(_169);
+        StorageLive(_170);
+        StorageLive(_171);
+        StorageLive(_172);
+        _182 = const safe_buffer_operations::promoted[1];
+        _172 = &(*_182);
+        _171 = &(*_172);
+        StorageLive(_174);
+        StorageLive(_175);
+        StorageLive(_176);
+        StorageLive(_177);
+        StorageLive(_178);
+        StorageLive(_179);
+        _179 = &_8;
+        _178 = &(*_179);
+        _177 = core::fmt::rt::Argument::<'_>::new_debug::<Vec<i32>>(move _178) -> [return: bb74, unwind: bb80];
+    }
+
+    bb74: {
+        StorageDead(_178);
+        _176 = [move _177];
+        StorageDead(_177);
+        _175 = &_176;
+        _174 = &(*_175);
+        _170 = core::fmt::rt::<impl Arguments<'_>>::new_v1::<2, 1>(move _171, move _174) -> [return: bb75, unwind: bb80];
+    }
+
+    bb75: {
+        StorageDead(_174);
+        StorageDead(_171);
+        _169 = _print(move _170) -> [return: bb76, unwind: bb80];
+    }
+
+    bb76: {
+        StorageDead(_170);
+        StorageDead(_179);
+        StorageDead(_176);
+        StorageDead(_175);
+        StorageDead(_172);
+        StorageDead(_169);
+        _168 = const ();
+        StorageDead(_168);
+        StorageLive(_180);
+        _180 = ();
+        _0 = Result::<(), Box<dyn std::error::Error>>::Ok(move _180);
+        StorageDead(_180);
+        drop(_109) -> [return: bb77, unwind: bb83];
+    }
+
+    bb77: {
+        StorageDead(_109);
+        StorageDead(_72);
+        StorageDead(_71);
+        StorageDead(_68);
+        StorageDead(_67);
+        drop(_8) -> [return: bb78, unwind: bb84];
+    }
+
+    bb78: {
+        StorageDead(_8);
+        drop(_1) -> [return: bb79, unwind: bb87];
+    }
+
+    bb79: {
+        StorageDead(_1);
+        return;
+    }
+
+    bb80 (cleanup): {
+        drop(_109) -> [return: bb83, unwind terminate(cleanup)];
+    }
+
+    bb81 (cleanup): {
+        drop(_115) -> [return: bb82, unwind terminate(cleanup)];
+    }
+
+    bb82 (cleanup): {
+        drop(_110) -> [return: bb83, unwind terminate(cleanup)];
+    }
+
+    bb83 (cleanup): {
+        drop(_8) -> [return: bb84, unwind terminate(cleanup)];
+    }
+
+    bb84 (cleanup): {
+        drop(_1) -> [return: bb87, unwind terminate(cleanup)];
+    }
+
+    bb85 (cleanup): {
+        drop(_7) -> [return: bb86, unwind terminate(cleanup)];
+    }
+
+    bb86 (cleanup): {
+        drop(_2) -> [return: bb87, unwind terminate(cleanup)];
+    }
+
+    bb87 (cleanup): {
+        resume;
+    }
+}

@@ -1,0 +1,12 @@
+// MIR for `safe_buffer_operations::promoted[0]` before SimplifyCfg-pre-optimizations
+
+const safe_buffer_operations::promoted[0]: &[&str; 2] = {
+    let mut _0: &[&str; 2];
+    let mut _1: [&str; 2];
+
+    bb0: {
+        _1 = [const "安全的块处理: ", const "\n"];
+        _0 = &_1;
+        return;
+    }
+}

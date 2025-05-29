@@ -1,0 +1,507 @@
+// MIR for `test_buffer_overflow` before AddCallGuards
+
+fn test_buffer_overflow() -> () {
+    let mut _0: ();
+    let mut _1: std::vec::Vec<u8>;
+    let _2: ();
+    let mut _3: std::ops::Range<usize>;
+    let mut _4: std::ops::Range<usize>;
+    let mut _6: ();
+    let _7: ();
+    let mut _8: std::option::Option<usize>;
+    let mut _9: &mut std::ops::Range<usize>;
+    let mut _10: &mut std::ops::Range<usize>;
+    let mut _11: isize;
+    let mut _12: !;
+    let mut _14: usize;
+    let mut _15: &mut u8;
+    let mut _16: &mut std::vec::Vec<u8>;
+    let mut _17: usize;
+    let mut _19: &mut std::vec::Vec<u8>;
+    let _20: ();
+    let mut _21: *mut u8;
+    let mut _22: *mut u8;
+    let mut _24: std::boxed::Box<[i32]>;
+    let mut _25: std::boxed::Box<[i32; 8]>;
+    let mut _26: usize;
+    let mut _27: usize;
+    let mut _28: *mut u8;
+    let mut _29: std::boxed::Box<[i32; 8]>;
+    let _31: ();
+    let mut _32: std::iter::Enumerate<std::slice::Iter<'_, i32>>;
+    let mut _33: std::iter::Enumerate<std::slice::Iter<'_, i32>>;
+    let mut _34: std::slice::Iter<'_, i32>;
+    let mut _35: &[i32];
+    let _36: &[i32];
+    let mut _37: &std::vec::Vec<i32>;
+    let _39: ();
+    let mut _40: std::option::Option<(usize, &i32)>;
+    let mut _41: &mut std::iter::Enumerate<std::slice::Iter<'_, i32>>;
+    let mut _42: &mut std::iter::Enumerate<std::slice::Iter<'_, i32>>;
+    let mut _43: isize;
+    let mut _44: !;
+    let mut _47: i32;
+    let mut _48: &mut i32;
+    let mut _49: &mut std::vec::Vec<i32>;
+    let mut _50: usize;
+    let mut _52: &mut std::vec::Vec<i32>;
+    let mut _54: *mut i32;
+    let mut _55: *mut i32;
+    let _56: ();
+    let _57: ();
+    let mut _58: std::fmt::Arguments<'_>;
+    let mut _59: &[&str; 2];
+    let _60: &[&str; 2];
+    let _61: [&str; 2];
+    let mut _62: &[core::fmt::rt::Argument<'_>; 1];
+    let _63: &[core::fmt::rt::Argument<'_>; 1];
+    let _64: [core::fmt::rt::Argument<'_>; 1];
+    let mut _65: core::fmt::rt::Argument<'_>;
+    let mut _66: &i32;
+    let _67: &i32;
+    let mut _69: &i32;
+    let mut _70: *const [i32; 8];
+    scope 1 {
+        debug buffer => _1;
+        let mut _5: std::ops::Range<usize>;
+        let _18: *mut u8;
+        scope 2 {
+            debug iter => _5;
+            let _13: usize;
+            scope 3 {
+                debug i => _13;
+            }
+        }
+        scope 4 {
+            debug ptr => _18;
+            let _23: std::vec::Vec<i32>;
+            let mut _77: *const ();
+            let mut _78: usize;
+            let mut _79: usize;
+            let mut _80: usize;
+            let mut _81: usize;
+            let mut _82: bool;
+            let mut _83: *const ();
+            let mut _84: usize;
+            let mut _85: usize;
+            let mut _86: bool;
+            let mut _87: bool;
+            let mut _88: bool;
+            let mut _89: bool;
+            let mut _97: *const ();
+            let mut _98: usize;
+            let mut _99: usize;
+            let mut _100: bool;
+            let mut _101: bool;
+            let mut _102: bool;
+            let mut _103: bool;
+            scope 5 {
+                debug data => _23;
+                let mut _30: std::vec::Vec<i32>;
+                scope 6 {
+                    debug small_buffer => _30;
+                    let mut _38: std::iter::Enumerate<std::slice::Iter<'_, i32>>;
+                    let _51: *mut i32;
+                    scope 7 {
+                        debug iter => _38;
+                        let _45: usize;
+                        let _46: i32;
+                        scope 8 {
+                            debug i => _45;
+                            debug item => _46;
+                        }
+                    }
+                    scope 9 {
+                        debug another_ptr => _51;
+                        let _53: i32;
+                        let mut _71: *const ();
+                        let mut _72: usize;
+                        let mut _73: usize;
+                        let mut _74: usize;
+                        let mut _75: usize;
+                        let mut _76: bool;
+                        let mut _90: *const ();
+                        let mut _91: usize;
+                        let mut _92: usize;
+                        let mut _93: bool;
+                        let mut _94: bool;
+                        let mut _95: bool;
+                        let mut _96: bool;
+                        scope 10 {
+                            debug val => _53;
+                            let mut _68: &[&str; 2];
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    bb0: {
+        StorageLive(_1);
+        _1 = from_elem::<u8>(const 0_u8, const 5_usize) -> [return: bb1, unwind continue];
+    }
+
+    bb1: {
+        StorageLive(_2);
+        StorageLive(_3);
+        StorageLive(_4);
+        _4 = std::ops::Range::<usize> { start: const 0_usize, end: const 10_usize };
+        _3 = <std::ops::Range<usize> as IntoIterator>::into_iter(move _4) -> [return: bb2, unwind: bb33];
+    }
+
+    bb2: {
+        StorageDead(_4);
+        StorageLive(_5);
+        _5 = move _3;
+        goto -> bb3;
+    }
+
+    bb3: {
+        StorageLive(_7);
+        StorageLive(_8);
+        StorageLive(_9);
+        StorageLive(_10);
+        _10 = &mut _5;
+        _9 = &mut (*_10);
+        _8 = <std::ops::Range<usize> as Iterator>::next(move _9) -> [return: bb4, unwind: bb33];
+    }
+
+    bb4: {
+        StorageDead(_9);
+        _11 = discriminant(_8);
+        switchInt(move _11) -> [0: bb7, 1: bb6, otherwise: bb5];
+    }
+
+    bb5: {
+        unreachable;
+    }
+
+    bb6: {
+        StorageLive(_13);
+        _13 = copy ((_8 as Some).0: usize);
+        StorageLive(_14);
+        _14 = copy _13;
+        StorageLive(_15);
+        StorageLive(_16);
+        _16 = &mut _1;
+        StorageLive(_17);
+        _17 = copy _13;
+        _15 = <Vec<u8> as IndexMut<usize>>::index_mut(move _16, move _17) -> [return: bb8, unwind: bb33];
+    }
+
+    bb7: {
+        _2 = const ();
+        StorageDead(_10);
+        StorageDead(_8);
+        StorageDead(_7);
+        StorageDead(_5);
+        StorageDead(_3);
+        StorageDead(_2);
+        StorageLive(_18);
+        StorageLive(_19);
+        _19 = &mut _1;
+        _18 = Vec::<u8>::as_mut_ptr(move _19) -> [return: bb9, unwind: bb33];
+    }
+
+    bb8: {
+        StorageDead(_17);
+        StorageDead(_16);
+        (*_15) = move _14 as u8 (IntToInt);
+        StorageDead(_14);
+        StorageDead(_15);
+        _7 = const ();
+        StorageDead(_13);
+        StorageDead(_10);
+        StorageDead(_8);
+        StorageDead(_7);
+        _6 = const ();
+        goto -> bb3;
+    }
+
+    bb9: {
+        StorageDead(_19);
+        StorageLive(_20);
+        StorageLive(_21);
+        StorageLive(_22);
+        _22 = copy _18;
+        _21 = std::ptr::mut_ptr::<impl *mut u8>::add(move _22, const 8_usize) -> [return: bb10, unwind: bb33];
+    }
+
+    bb10: {
+        StorageDead(_22);
+        _97 = copy _21 as *const () (PtrToPtr);
+        _98 = copy _97 as usize (Transmute);
+        _99 = SizeOf(u8);
+        _100 = Ne(copy _99, const 0_usize);
+        _101 = Eq(copy _98, const 0_usize);
+        _102 = BitAnd(copy _101, copy _100);
+        _103 = Not(copy _102);
+        assert(copy _103, "null pointer dereference occurred") -> [success: bb39, unwind unreachable];
+    }
+
+    bb11: {
+        StorageLive(_29);
+        _29 = ShallowInitBox(move _28, [i32; 8]);
+        _70 = copy ((_29.0: std::ptr::Unique<[i32; 8]>).0: std::ptr::NonNull<[i32; 8]>) as *const [i32; 8] (Transmute);
+        _77 = copy _70 as *const () (PtrToPtr);
+        _78 = copy _77 as usize (Transmute);
+        _79 = AlignOf([i32; 8]);
+        _80 = Sub(copy _79, const 1_usize);
+        _81 = BitAnd(copy _78, copy _80);
+        _82 = Eq(copy _81, const 0_usize);
+        assert(copy _82, "misaligned pointer dereference: address must be a multiple of {} but is {}", copy _79, copy _78) -> [success: bb36, unwind unreachable];
+    }
+
+    bb12: {
+        StorageDead(_24);
+        StorageLive(_30);
+        _30 = from_elem::<i32>(const 0_i32, const 3_usize) -> [return: bb13, unwind: bb32];
+    }
+
+    bb13: {
+        StorageLive(_31);
+        StorageLive(_32);
+        StorageLive(_33);
+        StorageLive(_34);
+        StorageLive(_35);
+        StorageLive(_36);
+        StorageLive(_37);
+        _37 = &_23;
+        _36 = <Vec<i32> as Deref>::deref(move _37) -> [return: bb14, unwind: bb31];
+    }
+
+    bb14: {
+        _35 = &(*_36);
+        StorageDead(_37);
+        _34 = core::slice::<impl [i32]>::iter(move _35) -> [return: bb15, unwind: bb31];
+    }
+
+    bb15: {
+        StorageDead(_35);
+        _33 = <std::slice::Iter<'_, i32> as Iterator>::enumerate(move _34) -> [return: bb16, unwind: bb31];
+    }
+
+    bb16: {
+        StorageDead(_34);
+        _32 = <Enumerate<std::slice::Iter<'_, i32>> as IntoIterator>::into_iter(move _33) -> [return: bb17, unwind: bb31];
+    }
+
+    bb17: {
+        StorageDead(_33);
+        StorageLive(_38);
+        _38 = move _32;
+        goto -> bb18;
+    }
+
+    bb18: {
+        StorageLive(_39);
+        StorageLive(_40);
+        StorageLive(_41);
+        StorageLive(_42);
+        _42 = &mut _38;
+        _41 = &mut (*_42);
+        _40 = <Enumerate<std::slice::Iter<'_, i32>> as Iterator>::next(move _41) -> [return: bb19, unwind: bb31];
+    }
+
+    bb19: {
+        StorageDead(_41);
+        _43 = discriminant(_40);
+        switchInt(move _43) -> [0: bb21, 1: bb20, otherwise: bb5];
+    }
+
+    bb20: {
+        StorageLive(_45);
+        _45 = copy (((_40 as Some).0: (usize, &i32)).0: usize);
+        StorageLive(_46);
+        _69 = deref_copy (((_40 as Some).0: (usize, &i32)).1: &i32);
+        _46 = copy (*_69);
+        StorageLive(_47);
+        _47 = copy _46;
+        StorageLive(_48);
+        StorageLive(_49);
+        _49 = &mut _30;
+        StorageLive(_50);
+        _50 = copy _45;
+        _48 = <Vec<i32> as IndexMut<usize>>::index_mut(move _49, move _50) -> [return: bb22, unwind: bb31];
+    }
+
+    bb21: {
+        _31 = const ();
+        StorageDead(_42);
+        StorageDead(_40);
+        StorageDead(_39);
+        StorageDead(_38);
+        StorageDead(_36);
+        StorageDead(_32);
+        StorageDead(_31);
+        StorageLive(_51);
+        StorageLive(_52);
+        _52 = &mut _30;
+        _51 = Vec::<i32>::as_mut_ptr(move _52) -> [return: bb23, unwind: bb31];
+    }
+
+    bb22: {
+        StorageDead(_50);
+        StorageDead(_49);
+        (*_48) = move _47;
+        StorageDead(_47);
+        StorageDead(_48);
+        _39 = const ();
+        StorageDead(_46);
+        StorageDead(_45);
+        StorageDead(_42);
+        StorageDead(_40);
+        StorageDead(_39);
+        _6 = const ();
+        goto -> bb18;
+    }
+
+    bb23: {
+        StorageDead(_52);
+        StorageLive(_53);
+        StorageLive(_54);
+        StorageLive(_55);
+        _55 = copy _51;
+        _54 = std::ptr::mut_ptr::<impl *mut i32>::offset(move _55, const 5_isize) -> [return: bb24, unwind: bb31];
+    }
+
+    bb24: {
+        StorageDead(_55);
+        _71 = copy _54 as *const () (PtrToPtr);
+        _72 = copy _71 as usize (Transmute);
+        _73 = AlignOf(i32);
+        _74 = Sub(copy _73, const 1_usize);
+        _75 = BitAnd(copy _72, copy _74);
+        _76 = Eq(copy _75, const 0_usize);
+        assert(copy _76, "misaligned pointer dereference: address must be a multiple of {} but is {}", copy _73, copy _72) -> [success: bb35, unwind unreachable];
+    }
+
+    bb25: {
+        StorageDead(_66);
+        _64 = [move _65];
+        StorageDead(_65);
+        _63 = &_64;
+        _62 = &(*_63);
+        _58 = core::fmt::rt::<impl Arguments<'_>>::new_v1::<2, 1>(move _59, move _62) -> [return: bb26, unwind: bb31];
+    }
+
+    bb26: {
+        StorageDead(_62);
+        StorageDead(_59);
+        _57 = _print(move _58) -> [return: bb27, unwind: bb31];
+    }
+
+    bb27: {
+        StorageDead(_58);
+        StorageDead(_67);
+        StorageDead(_64);
+        StorageDead(_63);
+        StorageDead(_60);
+        StorageDead(_57);
+        _56 = const ();
+        StorageDead(_56);
+        _0 = const ();
+        StorageDead(_53);
+        StorageDead(_51);
+        drop(_30) -> [return: bb28, unwind: bb32];
+    }
+
+    bb28: {
+        StorageDead(_30);
+        drop(_23) -> [return: bb29, unwind: bb33];
+    }
+
+    bb29: {
+        StorageDead(_23);
+        StorageDead(_18);
+        drop(_1) -> [return: bb30, unwind: bb34];
+    }
+
+    bb30: {
+        StorageDead(_1);
+        return;
+    }
+
+    bb31 (cleanup): {
+        drop(_30) -> [return: bb32, unwind terminate(cleanup)];
+    }
+
+    bb32 (cleanup): {
+        drop(_23) -> [return: bb33, unwind terminate(cleanup)];
+    }
+
+    bb33 (cleanup): {
+        drop(_1) -> [return: bb34, unwind terminate(cleanup)];
+    }
+
+    bb34 (cleanup): {
+        resume;
+    }
+
+    bb35: {
+        _90 = copy _54 as *const () (PtrToPtr);
+        _91 = copy _90 as usize (Transmute);
+        _92 = SizeOf(i32);
+        _93 = Ne(copy _92, const 0_usize);
+        _94 = Eq(copy _91, const 0_usize);
+        _95 = BitAnd(copy _94, copy _93);
+        _96 = Not(copy _95);
+        assert(copy _96, "null pointer dereference occurred") -> [success: bb38, unwind unreachable];
+    }
+
+    bb36: {
+        _83 = copy _70 as *const () (PtrToPtr);
+        _84 = copy _83 as usize (Transmute);
+        _85 = SizeOf([i32; 8]);
+        _86 = Ne(copy _85, const 0_usize);
+        _87 = Eq(copy _84, const 0_usize);
+        _88 = BitAnd(copy _87, copy _86);
+        _89 = Not(copy _88);
+        assert(copy _89, "null pointer dereference occurred") -> [success: bb37, unwind unreachable];
+    }
+
+    bb37: {
+        (*_70) = [const 1_i32, const 2_i32, const 3_i32, const 4_i32, const 5_i32, const 6_i32, const 7_i32, const 8_i32];
+        _25 = move _29;
+        _24 = move _25 as std::boxed::Box<[i32]> (PointerCoercion(Unsize, Implicit));
+        StorageDead(_29);
+        StorageDead(_25);
+        _23 = slice::<impl [i32]>::into_vec::<std::alloc::Global>(move _24) -> [return: bb12, unwind: bb33];
+    }
+
+    bb38: {
+        _53 = copy (*_54);
+        StorageDead(_54);
+        StorageLive(_56);
+        StorageLive(_57);
+        StorageLive(_58);
+        StorageLive(_59);
+        StorageLive(_60);
+        _68 = const test_buffer_overflow::promoted[0];
+        _60 = &(*_68);
+        _59 = &(*_60);
+        StorageLive(_62);
+        StorageLive(_63);
+        StorageLive(_64);
+        StorageLive(_65);
+        StorageLive(_66);
+        StorageLive(_67);
+        _67 = &_53;
+        _66 = &(*_67);
+        _65 = core::fmt::rt::Argument::<'_>::new_display::<i32>(move _66) -> [return: bb25, unwind: bb31];
+    }
+
+    bb39: {
+        (*_21) = const 42_u8;
+        StorageDead(_21);
+        _20 = const ();
+        StorageDead(_20);
+        StorageLive(_23);
+        StorageLive(_24);
+        StorageLive(_25);
+        _26 = SizeOf([i32; 8]);
+        _27 = AlignOf([i32; 8]);
+        _28 = alloc::alloc::exchange_malloc(move _26, move _27) -> [return: bb11, unwind: bb33];
+    }
+}

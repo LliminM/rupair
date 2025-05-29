@@ -1,0 +1,210 @@
+// MIR for `main` after built
+
+| User Type Annotations
+| 0: user_ty: Canonical { value: TypeOf(DefId(2:11697 ~ core[0ea9]::fmt::rt::{impl#2}::new_const), UserArgs { args: ['^0, ^1], user_self_ty: Some(UserSelfTy { impl_def_id: DefId(2:11695 ~ core[0ea9]::fmt::rt::{impl#2}), self_ty: std::fmt::Arguments<'^2> }) }), max_universe: U0, variables: [CanonicalVarInfo { kind: Region(U0) }, CanonicalVarInfo { kind: Const(U0) }, CanonicalVarInfo { kind: Region(U0) }] }, span: C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\std\src\macros.rs:143:28: 143:61, inferred_ty: fn(&[&'static str; 1]) -> std::fmt::Arguments<'_> {core::fmt::rt::<impl std::fmt::Arguments<'_>>::new_const::<1>}
+| 1: user_ty: Canonical { value: TypeOf(DefId(2:11697 ~ core[0ea9]::fmt::rt::{impl#2}::new_const), UserArgs { args: ['^0, ^1], user_self_ty: Some(UserSelfTy { impl_def_id: DefId(2:11695 ~ core[0ea9]::fmt::rt::{impl#2}), self_ty: std::fmt::Arguments<'^2> }) }), max_universe: U0, variables: [CanonicalVarInfo { kind: Region(U0) }, CanonicalVarInfo { kind: Const(U0) }, CanonicalVarInfo { kind: Region(U0) }] }, span: C:\Users\dell\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib/rustlib/src/rust\library\std\src\macros.rs:143:28: 143:61, inferred_ty: fn(&[&'static str; 1]) -> std::fmt::Arguments<'_> {core::fmt::rt::<impl std::fmt::Arguments<'_>>::new_const::<1>}
+|
+fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let mut _0: std::result::Result<(), std::boxed::Box<dyn std::error::Error>>;
+    let _1: ();
+    let _2: ();
+    let mut _3: std::fmt::Arguments<'_>;
+    let mut _4: &[&str; 1];
+    let _5: &[&str; 1];
+    let _6: [&str; 1];
+    let _7: ();
+    let mut _8: std::ops::ControlFlow<std::result::Result<std::convert::Infallible, std::boxed::Box<dyn std::error::Error>>>;
+    let mut _9: std::result::Result<(), std::boxed::Box<dyn std::error::Error>>;
+    let mut _10: isize;
+    let _11: std::result::Result<std::convert::Infallible, std::boxed::Box<dyn std::error::Error>>;
+    let mut _12: !;
+    let mut _13: std::result::Result<std::convert::Infallible, std::boxed::Box<dyn std::error::Error>>;
+    let _14: ();
+    let _15: ();
+    let _16: ();
+    let mut _17: std::fmt::Arguments<'_>;
+    let mut _18: &[&str; 1];
+    let _19: &[&str; 1];
+    let _20: [&str; 1];
+    let mut _21: ();
+    scope 1 {
+        debug residual => _11;
+        scope 2 {
+        }
+    }
+    scope 3 {
+        debug val => _14;
+        scope 4 {
+        }
+    }
+
+    bb0: {
+        StorageLive(_1);
+        StorageLive(_2);
+        StorageLive(_3);
+        StorageLive(_4);
+        StorageLive(_5);
+        StorageLive(_6);
+        _6 = [const "开始执行安全的缓冲区操作示例...\n\n"];
+        _5 = &_6;
+        _4 = &(*_5);
+        _3 = core::fmt::rt::<impl Arguments<'_>>::new_const::<1>(move _4) -> [return: bb1, unwind: bb27];
+    }
+
+    bb1: {
+        StorageDead(_4);
+        _2 = _print(move _3) -> [return: bb2, unwind: bb27];
+    }
+
+    bb2: {
+        StorageDead(_3);
+        StorageDead(_6);
+        StorageDead(_5);
+        StorageDead(_2);
+        _1 = const ();
+        StorageDead(_1);
+        StorageLive(_7);
+        StorageLive(_8);
+        StorageLive(_9);
+        _9 = safe_buffer_operations() -> [return: bb3, unwind: bb27];
+    }
+
+    bb3: {
+        _8 = <Result<(), Box<dyn std::error::Error>> as Try>::branch(move _9) -> [return: bb4, unwind: bb26];
+    }
+
+    bb4: {
+        StorageDead(_9);
+        PlaceMention(_8);
+        _10 = discriminant(_8);
+        switchInt(move _10) -> [0: bb8, 1: bb6, otherwise: bb5];
+    }
+
+    bb5: {
+        FakeRead(ForMatchedPlace(None), _8);
+        unreachable;
+    }
+
+    bb6: {
+        falseEdge -> [real: bb10, imaginary: bb8];
+    }
+
+    bb7: {
+        goto -> bb5;
+    }
+
+    bb8: {
+        StorageLive(_14);
+        _14 = copy ((_8 as Continue).0: ());
+        _7 = copy _14;
+        StorageDead(_14);
+        goto -> bb15;
+    }
+
+    bb9: {
+        goto -> bb5;
+    }
+
+    bb10: {
+        StorageLive(_11);
+        _11 = move ((_8 as Break).0: std::result::Result<std::convert::Infallible, std::boxed::Box<dyn std::error::Error>>);
+        StorageLive(_13);
+        _13 = move _11;
+        _0 = <Result<(), Box<dyn std::error::Error>> as FromResidual<Result<Infallible, Box<dyn std::error::Error>>>>::from_residual(move _13) -> [return: bb11, unwind: bb23];
+    }
+
+    bb11: {
+        StorageDead(_13);
+        goto -> bb19;
+    }
+
+    bb12: {
+        unreachable;
+    }
+
+    bb13: {
+        drop(_11) -> [return: bb14, unwind: bb25];
+    }
+
+    bb14: {
+        StorageDead(_11);
+        goto -> bb15;
+    }
+
+    bb15: {
+        drop(_8) -> [return: bb16, unwind: bb27];
+    }
+
+    bb16: {
+        StorageDead(_8);
+        StorageDead(_7);
+        StorageLive(_15);
+        StorageLive(_16);
+        StorageLive(_17);
+        StorageLive(_18);
+        StorageLive(_19);
+        StorageLive(_20);
+        _20 = [const "\n所有操作已安全完成！\n"];
+        _19 = &_20;
+        _18 = &(*_19);
+        _17 = core::fmt::rt::<impl Arguments<'_>>::new_const::<1>(move _18) -> [return: bb17, unwind: bb27];
+    }
+
+    bb17: {
+        StorageDead(_18);
+        _16 = _print(move _17) -> [return: bb18, unwind: bb27];
+    }
+
+    bb18: {
+        StorageDead(_17);
+        StorageDead(_20);
+        StorageDead(_19);
+        StorageDead(_16);
+        _15 = const ();
+        StorageDead(_15);
+        StorageLive(_21);
+        _21 = ();
+        _0 = Result::<(), Box<dyn std::error::Error>>::Ok(move _21);
+        StorageDead(_21);
+        goto -> bb22;
+    }
+
+    bb19: {
+        drop(_11) -> [return: bb20, unwind: bb25];
+    }
+
+    bb20: {
+        StorageDead(_11);
+        drop(_8) -> [return: bb21, unwind: bb27];
+    }
+
+    bb21: {
+        StorageDead(_8);
+        StorageDead(_7);
+        goto -> bb22;
+    }
+
+    bb22: {
+        return;
+    }
+
+    bb23 (cleanup): {
+        drop(_13) -> [return: bb24, unwind terminate(cleanup)];
+    }
+
+    bb24 (cleanup): {
+        drop(_11) -> [return: bb25, unwind terminate(cleanup)];
+    }
+
+    bb25 (cleanup): {
+        drop(_8) -> [return: bb27, unwind terminate(cleanup)];
+    }
+
+    bb26 (cleanup): {
+        drop(_9) -> [return: bb27, unwind terminate(cleanup)];
+    }
+
+    bb27 (cleanup): {
+        resume;
+    }
+}
